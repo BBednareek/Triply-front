@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:triply/core/constants/routes.dart';
 import 'package:triply/core/theme/styles/login_widgets/input_field.dart';
 import 'package:triply/core/theme/styles/login_widgets/login_button.dart';
-import 'package:triply/features/register.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -13,9 +14,9 @@ class Login extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Column(
-          children: [
+          children: <Widget>[
             Stack(
-              children: [
+              children: <Widget>[
                 Container(
                   padding: EdgeInsets.zero,
                   height: height * .7,
@@ -26,18 +27,13 @@ class Login extends StatelessWidget {
                           bottomRight: Radius.circular(100))),
                 ),
                 Column(
-                  children: [
+                  children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Align(
                         alignment: Alignment.topRight,
                         child: TextButton(
-                          onPressed: () => Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const Register(),
-                            ),
-                          ),
+                          onPressed: () => context.go(Routes.register),
                           style: TextButton.styleFrom(
                             side: const BorderSide(
                               color: Colors.teal,

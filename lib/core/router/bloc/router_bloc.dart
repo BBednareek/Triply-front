@@ -12,7 +12,6 @@ class RouterBloc extends Bloc<RouterEvent, RouterState> {
     on<_Change>(_onChange);
   }
 
-  _onChange(_Change event, Emitter<RouterState> emit) {
-    emit(state.copyWith(changed: !state.changed));
-  }
+  _onChange(_Change event, Emitter<RouterState> emit) =>
+      emit(state.copyWith(changed: !state.changed));
 }

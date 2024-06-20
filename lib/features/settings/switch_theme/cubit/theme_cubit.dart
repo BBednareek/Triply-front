@@ -1,6 +1,8 @@
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:triply/features/switch_theme/domain/entities/theme_entity.dart';
+import 'package:injectable/injectable.dart';
+import 'package:triply/features/settings/switch_theme/domain/entities/theme_entity.dart';
 
+@Injectable()
 class ThemeCubit extends HydratedCubit<ThemeEntity> {
   ThemeCubit() : super(ThemeEntity(isDark: false));
 

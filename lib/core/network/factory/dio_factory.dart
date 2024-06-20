@@ -1,7 +1,12 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
+import 'package:triply/core/network/interceptors/auth_interceptors.dart';
+import 'package:triply/features/auth/cubit/auth_cubit.dart';
 
 abstract class DioFactory {
   abstract Dio dio;
+  abstract final AuthCubit authCubit;
 
   Dio getDio({String? url, Map<String, dynamic>? headers});
 
@@ -17,15 +22,25 @@ abstract class DioFactory {
 
 class DioFactoryImpl implements DioFactory {
   @override
+  final AuthCubit authCubit;
+  @override
   late Dio dio = getDio();
+
+  DioFactoryImpl({required this.authCubit});
 
   @override
   Dio getDio({String? url, Map<String, dynamic>? headers}) => Dio(BaseOptions(
-        baseUrl: url ?? "",
-        contentType: 'application/json',
-        responseType: ResponseType.json,
-        headers: headers,
-      ));
+      baseUrl: url ?? "",
+      contentType: 'application/json',
+      responseType: ResponseType.json,
+      headers: headers,
+      validateStatus: (int? status) =>
+          status! >= HttpStatus.ok && status <= HttpStatus.imUsed))
+    ..interceptors.addAll(
+      [
+        AuthInterceptors(authCubit: authCubit),
+      ],
+    );
 
   @override
   Future<Map<String, dynamic>> get(

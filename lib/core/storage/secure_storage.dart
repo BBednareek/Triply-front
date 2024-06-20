@@ -38,4 +38,7 @@ class SecureStorageService {
       return null;
     }
   }
+
+  Future<void> deleteSecureData(String key) async =>
+      await _secureStorage.delete(key: key);
 }

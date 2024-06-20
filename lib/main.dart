@@ -5,18 +5,20 @@ import 'package:triply/core/addons/main_addon.dart';
 import 'package:triply/core/di/injectable.dart';
 import 'package:triply/core/router/go_router.dart';
 import 'package:triply/core/theme/theme.dart';
-import 'package:triply/features/switch_theme/domain/entities/theme_entity.dart';
-import 'package:triply/features/switch_theme/presentation/cubit/theme_cubit.dart';
+import 'package:triply/features/auth/cubit/auth_cubit.dart';
+import 'package:triply/features/auth/no_internet/internet_bloc.dart';
+import 'package:triply/features/settings/switch_theme/cubit/theme_cubit.dart';
+import 'package:triply/features/settings/switch_theme/domain/entities/theme_entity.dart';
 
 Future<void> main() async {
-  mainAddon();
+  await mainAddon();
 
   runApp(
     MultiBlocProvider(
       providers: [
-        BlocProvider.value(
-          value: locator<ThemeCubit>(),
-        ),
+        BlocProvider.value(value: locator<AuthCubit>()),
+        BlocProvider.value(value: locator<ThemeCubit>()),
+        BlocProvider.value(value: locator<InternetBloc>()),
       ],
       child: const Triply(),
     ),
@@ -39,7 +41,23 @@ class Triply extends StatelessWidget {
         builder: (appContext, child) {
           return ScrollConfiguration(
             behavior: DisableGlowScroll(),
-            child: child!,
+            child: MultiBlocListener(
+              listeners: [
+                BlocListener<AuthCubit, AuthState>(
+                  listener: (context, state) => goRouter.refresh(),
+                ),
+
+                /// [Internet bloc implementation when endpoints will be available]
+                // BlocListener<InternetBloc, InternetState>(
+                //   listener: (context, state) {
+                //     if (state.noInternet && state.lastRoute == null) {
+                //       goRouter.refresh();
+                //     }
+                //   },
+                // ),
+              ],
+              child: child!,
+            ),
           );
         },
       ),

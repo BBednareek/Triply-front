@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:triply/core/constants/routes.dart';
 import 'package:triply/core/theme/styles/login_widgets/input_field.dart';
 import 'package:triply/core/theme/styles/login_widgets/login_button.dart';
-import 'package:triply/features/login.dart';
 
 class Register extends StatelessWidget {
   const Register({super.key});
@@ -32,12 +33,7 @@ class Register extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.topRight,
                         child: TextButton(
-                          onPressed: () => Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const Login(),
-                            ),
-                          ),
+                          onPressed: () => context.go(Routes.login),
                           style: TextButton.styleFrom(
                             side: const BorderSide(
                               color: Colors.teal,
