@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:triply/features/auth/cubit/auth_cubit.dart';
 
@@ -18,5 +19,26 @@ class AuthInterceptors extends Interceptor {
       }
     });
     return handler.next(response);
+  }
+
+  @override
+  void onRequest(
+      RequestOptions options, RequestInterceptorHandler handler) async {
+    final Either<void, String?> session = await authCubit.session();
+
+    session.fold((error) async {
+      await authCubit.logout();
+      return;
+    }, (accessToken) async {
+      options.headers['Authorization'] = 'Bearer $accessToken';
+    });
+    return handler.next(options);
+  }
+
+  @override
+  Future<void> onError(
+      DioException err, ErrorInterceptorHandler handler) async {
+    authCubit.state.whenOrNull(authorized: () async {});
+    return handler.reject(err);
   }
 }

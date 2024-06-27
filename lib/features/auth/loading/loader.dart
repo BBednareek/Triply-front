@@ -1,19 +1,29 @@
-import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:triply/core/constants/images.dart';
-import 'package:triply/core/di/injectable.dart';
 import 'package:triply/core/router/go_router.dart';
-import 'package:triply/features/auth/cubit/auth_cubit.dart';
+import 'package:triply/features/test/bloc/test_bloc.dart';
 
 class Loader extends StatelessWidget {
   const Loader({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: LoadingImage()),
+    return Scaffold(
+      body: Center(
+        child: BlocListener<TestBloc, TestState>(
+          listener: (context, state) {
+            state.when(
+              loading: () {},
+              loaded: () => goRouter.refresh(),
+              error: (errorMessage) => log(errorMessage),
+            );
+          },
+          child: const LoadingImage(),
+        ),
+      ),
     );
   }
 }
@@ -42,11 +52,6 @@ class _LoadingImageState extends State<LoadingImage>
     _animation = Tween<double>(begin: .5, end: 1).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
     );
-
-    Timer(const Duration(seconds: 3), () {
-      log(locator<AuthCubit>().state.toString());
-      goRouter.refresh();
-    });
   }
 
   @override

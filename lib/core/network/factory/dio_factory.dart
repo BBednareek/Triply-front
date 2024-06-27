@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:triply/core/network/interceptors/auth_interceptors.dart';
 import 'package:triply/features/auth/cubit/auth_cubit.dart';
 
@@ -20,6 +21,7 @@ abstract class DioFactory {
   });
 }
 
+@LazySingleton(as: DioFactory)
 class DioFactoryImpl implements DioFactory {
   @override
   final AuthCubit authCubit;

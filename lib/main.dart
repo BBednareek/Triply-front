@@ -9,6 +9,7 @@ import 'package:triply/features/auth/cubit/auth_cubit.dart';
 import 'package:triply/features/auth/no_internet/internet_bloc.dart';
 import 'package:triply/features/settings/switch_theme/cubit/theme_cubit.dart';
 import 'package:triply/features/settings/switch_theme/domain/entities/theme_entity.dart';
+import 'package:triply/features/test/bloc/test_bloc.dart';
 
 Future<void> main() async {
   await mainAddon();
@@ -16,6 +17,8 @@ Future<void> main() async {
   runApp(
     MultiBlocProvider(
       providers: [
+        BlocProvider.value(
+            value: locator<TestBloc>()..add(const TestEvent.get())),
         BlocProvider.value(value: locator<AuthCubit>()),
         BlocProvider.value(value: locator<ThemeCubit>()),
         BlocProvider.value(value: locator<InternetBloc>()),

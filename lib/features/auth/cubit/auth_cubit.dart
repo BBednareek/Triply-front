@@ -22,7 +22,7 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<Either<void, String?>> session() async {
-    final result =
+    final String? result =
         await secureStorageService.readSecureData(Secures.accessToken);
     if (result != null && result != "") {
       emit(const _Authorized());
@@ -40,4 +40,7 @@ class AuthCubit extends Cubit<AuthState> {
 
     emit(const _Unauthorized());
   }
+
+  Future<String> getLoginType() async =>
+      await secureStorageService.readSecureData(Secures.loginType) ?? "mail";
 }

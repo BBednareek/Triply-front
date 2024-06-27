@@ -3,11 +3,22 @@ import 'package:go_router/go_router.dart';
 import 'package:triply/core/constants/routes.dart';
 import 'package:triply/core/di/injectable.dart';
 import 'package:triply/features/auth/cubit/auth_cubit.dart';
+import 'package:triply/features/auth/no_internet/internet_bloc.dart';
 
 Future<String?> redirect(BuildContext context, GoRouterState state) async {
   final String? fullPath = state.fullPath;
 
-  final authCubit = locator<AuthCubit>();
+  final InternetBloc internetBloc = locator<InternetBloc>();
+  final lastRoute = internetBloc.state.lastRoute;
+  if (internetBloc.state.noInternet) {
+    if (lastRoute == null || lastRoute.isEmpty) {
+      internetBloc.add(InternetEvent.lastRoute(fullPath ?? Routes.login));
+      return Routes.noInternet;
+    }
+    return null;
+  }
+
+  final AuthCubit authCubit = locator<AuthCubit>();
   return authCubit.state.when(
     loading: () => Routes.loading,
     unAuthorized: () async {
