@@ -13,8 +13,9 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'package:triply/core/network/factory/dio_factory.dart' as _i8;
 import 'package:triply/core/router/bloc/router_bloc.dart' as _i4;
 import 'package:triply/core/storage/secure_storage.dart' as _i5;
+import 'package:triply/features/auth/auth_features/no_internet/internet_bloc.dart'
+    as _i6;
 import 'package:triply/features/auth/cubit/auth_cubit.dart' as _i7;
-import 'package:triply/features/auth/no_internet/internet_bloc.dart' as _i6;
 import 'package:triply/features/settings/switch_theme/cubit/theme_cubit.dart'
     as _i3;
 import 'package:triply/features/test/bloc/test_bloc.dart' as _i12;

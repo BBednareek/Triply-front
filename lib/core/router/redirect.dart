@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:triply/core/constants/routes.dart';
 import 'package:triply/core/di/injectable.dart';
+import 'package:triply/features/auth/auth_features/no_internet/internet_bloc.dart';
 import 'package:triply/features/auth/cubit/auth_cubit.dart';
-import 'package:triply/features/auth/no_internet/internet_bloc.dart';
 
 Future<String?> redirect(BuildContext context, GoRouterState state) async {
   final String? fullPath = state.fullPath;

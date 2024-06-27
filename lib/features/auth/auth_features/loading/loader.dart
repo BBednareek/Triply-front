@@ -18,7 +18,10 @@ class Loader extends StatelessWidget {
             state.when(
               loading: () {},
               loaded: () => goRouter.refresh(),
-              error: (errorMessage) => log(errorMessage),
+              error: (errorMessage) {
+                log(errorMessage);
+                return;
+              },
             );
           },
           child: const LoadingImage(),

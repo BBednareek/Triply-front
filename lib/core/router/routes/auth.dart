@@ -1,6 +1,6 @@
 import 'package:go_router/go_router.dart';
-import 'package:triply/features/auth/loading/loader.dart';
-import 'package:triply/features/login.dart';
+import 'package:triply/features/auth/auth_features/loading/loader.dart';
+import 'package:triply/features/auth/auth_features/login/presentation/pages/login.dart';
 import 'package:triply/features/register.dart';
 
 final List<RouteBase> authRoutes = [

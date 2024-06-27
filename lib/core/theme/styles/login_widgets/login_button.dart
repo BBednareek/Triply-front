@@ -1,36 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:triply/core/theme/colors.dart';
 
 class LoginButton extends StatelessWidget {
   const LoginButton({
     super.key,
-    this.imgPath,
-    required this.height,
-    required this.width,
     required this.buttonTitle,
     required this.onPressed,
   });
 
-  final double height;
-  final double width;
   final String buttonTitle;
   final Function onPressed;
-  final String? imgPath;
 
   @override
   Widget build(BuildContext context) {
+    final double height = MediaQuery.of(context).size.height;
+    final double width = MediaQuery.of(context).size.width;
     return SizedBox(
-      height: height,
-      width: width,
+      height: height * .065,
+      width: width * .9,
       child: ElevatedButton(
         onPressed: () => onPressed,
         style: ElevatedButton.styleFrom(
-            side: const BorderSide(color: Colors.teal)),
+            side: const BorderSide(color: ThemeColors.baseGreen)),
         child: Text(
           buttonTitle,
           style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w600,
-            color: Colors.teal,
+            color: ThemeColors.baseGreen,
           ),
         ),
       ),
