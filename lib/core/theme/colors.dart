@@ -5,8 +5,21 @@ class ThemeColors extends Constants {
   /// [Dark theme colors]
 
   /// [Light theme colors]
+  ///   [Background]
+  static const Color lightBackground = Color(0xFFEDF5FC);
+
+  ///   [Widget colors]
+  static const Color darkBlue = Color(0xFF263238);
+  static const Color lightGrey = Color(0xFFE4E4E4);
+
+  ///   [Font colors]
+  static const Color ligthFontBlue = Color(0xFF352555);
+  static const Color ligthFontGrey = Color(0xFF97ADB6);
+
+  /// [For both]
+  ///   [Button colors]
   static const Color baseGreen = Color(0xFF40B59F);
   static const Color secondaryGreen = Color(0xFF95BFB7);
-  static const Color darkBlue = Color(0xFF263238);
-  static const Color grey = Color(0xFFE4E4E4);
+  static const Color errorBackground = Color(0xFFFFCFCF);
+  static const Color errorText = Color(0xFFFF0000);
 }

@@ -2,11 +2,13 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:triply/core/network/error/handler.dart';
 import 'package:triply/core/network/interceptors/auth_interceptors.dart';
 import 'package:triply/features/auth/cubit/auth_cubit.dart';
 
-abstract class DioFactory {
-  abstract Dio dio;
+abstract class DioFactory with ErrorHandling {
+  // ignore: unused_field
+  abstract Dio _dio;
   abstract final AuthCubit authCubit;
 
   Dio getDio({String? url, Map<String, dynamic>? headers});
@@ -15,6 +17,7 @@ abstract class DioFactory {
     String route, {
     Map<String, dynamic>? params,
   });
+
   Future<Map<String, dynamic>> post(
     String route, {
     Object? data,
@@ -22,11 +25,11 @@ abstract class DioFactory {
 }
 
 @LazySingleton(as: DioFactory)
-class DioFactoryImpl implements DioFactory {
+class DioFactoryImpl extends DioFactory {
   @override
   final AuthCubit authCubit;
   @override
-  late Dio dio = getDio();
+  late Dio _dio = getDio();
 
   DioFactoryImpl({required this.authCubit});
 
@@ -51,7 +54,7 @@ class DioFactoryImpl implements DioFactory {
     Map<String, dynamic>? headers,
   }) async {
     try {
-      final Response<dynamic> result = await dio.get(
+      final Response<dynamic> result = await _dio.get(
         route,
         queryParameters: params,
         options: Options(headers: headers),
@@ -59,21 +62,21 @@ class DioFactoryImpl implements DioFactory {
 
       return result.data;
     } catch (e) {
-      rethrow;
+      throw handleException(e);
     }
   }
 
   @override
   Future<Map<String, dynamic>> post(String route, {Object? data}) async {
     try {
-      final Response<dynamic> result = await dio.get(
+      final Response<dynamic> result = await _dio.get(
         route,
         data: data,
       );
 
       return result.data;
     } catch (e) {
-      rethrow;
+      throw handleException(e);
     }
   }
 }

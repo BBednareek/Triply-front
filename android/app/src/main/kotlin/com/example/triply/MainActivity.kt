@@ -1,4 +1,4 @@
-package com.example.triply
+package com.triply
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -14,9 +14,17 @@ class AuthCubit extends Cubit<AuthState> {
 
   AuthCubit({required this.secureStorageService}) : super(const _Loading());
 
-  Future<void> login({required String userId}) async {
+  Future<void> login({
+    required String userId,
+    required String accessToken,
+    required String loginType,
+  }) async {
     await secureStorageService
         .writeSecureData(SecureItem(Secures.userId, userId));
+    await secureStorageService
+        .writeSecureData(SecureItem(Secures.accessToken, accessToken));
+    await secureStorageService
+        .writeSecureData(SecureItem(Secures.loginType, loginType));
 
     emit(const _Authorized());
   }
@@ -37,6 +45,8 @@ class AuthCubit extends Cubit<AuthState> {
     emit(const _Loading());
 
     await secureStorageService.deleteSecureData(Secures.userId);
+    await secureStorageService.deleteSecureData(Secures.accessToken);
+    await secureStorageService.deleteSecureData(Secures.loginType);
 
     emit(const _Unauthorized());
   }

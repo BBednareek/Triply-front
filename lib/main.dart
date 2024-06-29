@@ -12,7 +12,7 @@ import 'package:triply/features/settings/switch_theme/domain/entities/theme_enti
 import 'package:triply/features/test/bloc/test_bloc.dart';
 
 Future<void> main() async {
-  await mainAddon();
+  await MainMethods.mainAddon();
 
   runApp(
     MultiBlocProvider(
@@ -51,13 +51,13 @@ class Triply extends StatelessWidget {
                 ),
 
                 /// [Internet bloc implementation when endpoints will be available]
-                // BlocListener<InternetBloc, InternetState>(
-                //   listener: (context, state) {
-                //     if (state.noInternet && state.lastRoute == null) {
-                //       goRouter.refresh();
-                //     }
-                //   },
-                // ),
+                BlocListener<InternetBloc, InternetState>(
+                  listener: (context, state) {
+                    if (state.noInternet && state.lastRoute == null) {
+                      goRouter.refresh();
+                    }
+                  },
+                ),
               ],
               child: child!,
             ),
