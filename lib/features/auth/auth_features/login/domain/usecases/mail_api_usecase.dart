@@ -6,10 +6,10 @@ import 'package:triply/features/auth/auth_features/login/domain/entities/login_m
 import 'package:triply/features/auth/auth_features/shared/entities/login_result_entity.dart';
 
 @lazySingleton
-class MailApiUsecase {
+class LoginMailApiUsecase {
   final LoginRepository loginRepository;
 
-  MailApiUsecase({required this.loginRepository});
+  LoginMailApiUsecase({required this.loginRepository});
 
   Future<Either<Failure, LoginResultEntity>> call(
           LoginMailEntity entity) async =>

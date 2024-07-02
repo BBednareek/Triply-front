@@ -24,6 +24,7 @@ mixin _$MailRegisterEvent {
     required TResult Function(int gender) genderChanged,
     required TResult Function(String phoneNumber) phoneNumberChanged,
     required TResult Function(String phoneNumberCode) phoneNumberCodeChanged,
+    required TResult Function(RequestMailRegisterEntity entity) apiLogin,
     required TResult Function() submit,
   }) =>
       throw _privateConstructorUsedError;
@@ -35,6 +36,7 @@ mixin _$MailRegisterEvent {
     TResult? Function(int gender)? genderChanged,
     TResult? Function(String phoneNumber)? phoneNumberChanged,
     TResult? Function(String phoneNumberCode)? phoneNumberCodeChanged,
+    TResult? Function(RequestMailRegisterEntity entity)? apiLogin,
     TResult? Function()? submit,
   }) =>
       throw _privateConstructorUsedError;
@@ -46,6 +48,7 @@ mixin _$MailRegisterEvent {
     TResult Function(int gender)? genderChanged,
     TResult Function(String phoneNumber)? phoneNumberChanged,
     TResult Function(String phoneNumberCode)? phoneNumberCodeChanged,
+    TResult Function(RequestMailRegisterEntity entity)? apiLogin,
     TResult Function()? submit,
     required TResult orElse(),
   }) =>
@@ -59,6 +62,7 @@ mixin _$MailRegisterEvent {
     required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
     required TResult Function(_PhoneNumberCodeChanged value)
         phoneNumberCodeChanged,
+    required TResult Function(_ApiLogin value) apiLogin,
     required TResult Function(_Submit value) submit,
   }) =>
       throw _privateConstructorUsedError;
@@ -70,6 +74,7 @@ mixin _$MailRegisterEvent {
     TResult? Function(_GenderChanged value)? genderChanged,
     TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult? Function(_PhoneNumberCodeChanged value)? phoneNumberCodeChanged,
+    TResult? Function(_ApiLogin value)? apiLogin,
     TResult? Function(_Submit value)? submit,
   }) =>
       throw _privateConstructorUsedError;
@@ -81,6 +86,7 @@ mixin _$MailRegisterEvent {
     TResult Function(_GenderChanged value)? genderChanged,
     TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult Function(_PhoneNumberCodeChanged value)? phoneNumberCodeChanged,
+    TResult Function(_ApiLogin value)? apiLogin,
     TResult Function(_Submit value)? submit,
     required TResult orElse(),
   }) =>
@@ -175,6 +181,7 @@ class _$EmailChangedImpl implements _EmailChanged {
     required TResult Function(int gender) genderChanged,
     required TResult Function(String phoneNumber) phoneNumberChanged,
     required TResult Function(String phoneNumberCode) phoneNumberCodeChanged,
+    required TResult Function(RequestMailRegisterEntity entity) apiLogin,
     required TResult Function() submit,
   }) {
     return emailChanged(email);
@@ -189,6 +196,7 @@ class _$EmailChangedImpl implements _EmailChanged {
     TResult? Function(int gender)? genderChanged,
     TResult? Function(String phoneNumber)? phoneNumberChanged,
     TResult? Function(String phoneNumberCode)? phoneNumberCodeChanged,
+    TResult? Function(RequestMailRegisterEntity entity)? apiLogin,
     TResult? Function()? submit,
   }) {
     return emailChanged?.call(email);
@@ -203,6 +211,7 @@ class _$EmailChangedImpl implements _EmailChanged {
     TResult Function(int gender)? genderChanged,
     TResult Function(String phoneNumber)? phoneNumberChanged,
     TResult Function(String phoneNumberCode)? phoneNumberCodeChanged,
+    TResult Function(RequestMailRegisterEntity entity)? apiLogin,
     TResult Function()? submit,
     required TResult orElse(),
   }) {
@@ -222,6 +231,7 @@ class _$EmailChangedImpl implements _EmailChanged {
     required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
     required TResult Function(_PhoneNumberCodeChanged value)
         phoneNumberCodeChanged,
+    required TResult Function(_ApiLogin value) apiLogin,
     required TResult Function(_Submit value) submit,
   }) {
     return emailChanged(this);
@@ -236,6 +246,7 @@ class _$EmailChangedImpl implements _EmailChanged {
     TResult? Function(_GenderChanged value)? genderChanged,
     TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult? Function(_PhoneNumberCodeChanged value)? phoneNumberCodeChanged,
+    TResult? Function(_ApiLogin value)? apiLogin,
     TResult? Function(_Submit value)? submit,
   }) {
     return emailChanged?.call(this);
@@ -250,6 +261,7 @@ class _$EmailChangedImpl implements _EmailChanged {
     TResult Function(_GenderChanged value)? genderChanged,
     TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult Function(_PhoneNumberCodeChanged value)? phoneNumberCodeChanged,
+    TResult Function(_ApiLogin value)? apiLogin,
     TResult Function(_Submit value)? submit,
     required TResult orElse(),
   }) {
@@ -341,6 +353,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     required TResult Function(int gender) genderChanged,
     required TResult Function(String phoneNumber) phoneNumberChanged,
     required TResult Function(String phoneNumberCode) phoneNumberCodeChanged,
+    required TResult Function(RequestMailRegisterEntity entity) apiLogin,
     required TResult Function() submit,
   }) {
     return passwordChanged(password);
@@ -355,6 +368,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     TResult? Function(int gender)? genderChanged,
     TResult? Function(String phoneNumber)? phoneNumberChanged,
     TResult? Function(String phoneNumberCode)? phoneNumberCodeChanged,
+    TResult? Function(RequestMailRegisterEntity entity)? apiLogin,
     TResult? Function()? submit,
   }) {
     return passwordChanged?.call(password);
@@ -369,6 +383,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     TResult Function(int gender)? genderChanged,
     TResult Function(String phoneNumber)? phoneNumberChanged,
     TResult Function(String phoneNumberCode)? phoneNumberCodeChanged,
+    TResult Function(RequestMailRegisterEntity entity)? apiLogin,
     TResult Function()? submit,
     required TResult orElse(),
   }) {
@@ -388,6 +403,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
     required TResult Function(_PhoneNumberCodeChanged value)
         phoneNumberCodeChanged,
+    required TResult Function(_ApiLogin value) apiLogin,
     required TResult Function(_Submit value) submit,
   }) {
     return passwordChanged(this);
@@ -402,6 +418,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     TResult? Function(_GenderChanged value)? genderChanged,
     TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult? Function(_PhoneNumberCodeChanged value)? phoneNumberCodeChanged,
+    TResult? Function(_ApiLogin value)? apiLogin,
     TResult? Function(_Submit value)? submit,
   }) {
     return passwordChanged?.call(this);
@@ -416,6 +433,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     TResult Function(_GenderChanged value)? genderChanged,
     TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult Function(_PhoneNumberCodeChanged value)? phoneNumberCodeChanged,
+    TResult Function(_ApiLogin value)? apiLogin,
     TResult Function(_Submit value)? submit,
     required TResult orElse(),
   }) {
@@ -507,6 +525,7 @@ class _$NicknameChangedImpl implements _NicknameChanged {
     required TResult Function(int gender) genderChanged,
     required TResult Function(String phoneNumber) phoneNumberChanged,
     required TResult Function(String phoneNumberCode) phoneNumberCodeChanged,
+    required TResult Function(RequestMailRegisterEntity entity) apiLogin,
     required TResult Function() submit,
   }) {
     return nicknameChanged(nickname);
@@ -521,6 +540,7 @@ class _$NicknameChangedImpl implements _NicknameChanged {
     TResult? Function(int gender)? genderChanged,
     TResult? Function(String phoneNumber)? phoneNumberChanged,
     TResult? Function(String phoneNumberCode)? phoneNumberCodeChanged,
+    TResult? Function(RequestMailRegisterEntity entity)? apiLogin,
     TResult? Function()? submit,
   }) {
     return nicknameChanged?.call(nickname);
@@ -535,6 +555,7 @@ class _$NicknameChangedImpl implements _NicknameChanged {
     TResult Function(int gender)? genderChanged,
     TResult Function(String phoneNumber)? phoneNumberChanged,
     TResult Function(String phoneNumberCode)? phoneNumberCodeChanged,
+    TResult Function(RequestMailRegisterEntity entity)? apiLogin,
     TResult Function()? submit,
     required TResult orElse(),
   }) {
@@ -554,6 +575,7 @@ class _$NicknameChangedImpl implements _NicknameChanged {
     required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
     required TResult Function(_PhoneNumberCodeChanged value)
         phoneNumberCodeChanged,
+    required TResult Function(_ApiLogin value) apiLogin,
     required TResult Function(_Submit value) submit,
   }) {
     return nicknameChanged(this);
@@ -568,6 +590,7 @@ class _$NicknameChangedImpl implements _NicknameChanged {
     TResult? Function(_GenderChanged value)? genderChanged,
     TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult? Function(_PhoneNumberCodeChanged value)? phoneNumberCodeChanged,
+    TResult? Function(_ApiLogin value)? apiLogin,
     TResult? Function(_Submit value)? submit,
   }) {
     return nicknameChanged?.call(this);
@@ -582,6 +605,7 @@ class _$NicknameChangedImpl implements _NicknameChanged {
     TResult Function(_GenderChanged value)? genderChanged,
     TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult Function(_PhoneNumberCodeChanged value)? phoneNumberCodeChanged,
+    TResult Function(_ApiLogin value)? apiLogin,
     TResult Function(_Submit value)? submit,
     required TResult orElse(),
   }) {
@@ -671,6 +695,7 @@ class _$GenderChangedImpl implements _GenderChanged {
     required TResult Function(int gender) genderChanged,
     required TResult Function(String phoneNumber) phoneNumberChanged,
     required TResult Function(String phoneNumberCode) phoneNumberCodeChanged,
+    required TResult Function(RequestMailRegisterEntity entity) apiLogin,
     required TResult Function() submit,
   }) {
     return genderChanged(gender);
@@ -685,6 +710,7 @@ class _$GenderChangedImpl implements _GenderChanged {
     TResult? Function(int gender)? genderChanged,
     TResult? Function(String phoneNumber)? phoneNumberChanged,
     TResult? Function(String phoneNumberCode)? phoneNumberCodeChanged,
+    TResult? Function(RequestMailRegisterEntity entity)? apiLogin,
     TResult? Function()? submit,
   }) {
     return genderChanged?.call(gender);
@@ -699,6 +725,7 @@ class _$GenderChangedImpl implements _GenderChanged {
     TResult Function(int gender)? genderChanged,
     TResult Function(String phoneNumber)? phoneNumberChanged,
     TResult Function(String phoneNumberCode)? phoneNumberCodeChanged,
+    TResult Function(RequestMailRegisterEntity entity)? apiLogin,
     TResult Function()? submit,
     required TResult orElse(),
   }) {
@@ -718,6 +745,7 @@ class _$GenderChangedImpl implements _GenderChanged {
     required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
     required TResult Function(_PhoneNumberCodeChanged value)
         phoneNumberCodeChanged,
+    required TResult Function(_ApiLogin value) apiLogin,
     required TResult Function(_Submit value) submit,
   }) {
     return genderChanged(this);
@@ -732,6 +760,7 @@ class _$GenderChangedImpl implements _GenderChanged {
     TResult? Function(_GenderChanged value)? genderChanged,
     TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult? Function(_PhoneNumberCodeChanged value)? phoneNumberCodeChanged,
+    TResult? Function(_ApiLogin value)? apiLogin,
     TResult? Function(_Submit value)? submit,
   }) {
     return genderChanged?.call(this);
@@ -746,6 +775,7 @@ class _$GenderChangedImpl implements _GenderChanged {
     TResult Function(_GenderChanged value)? genderChanged,
     TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult Function(_PhoneNumberCodeChanged value)? phoneNumberCodeChanged,
+    TResult Function(_ApiLogin value)? apiLogin,
     TResult Function(_Submit value)? submit,
     required TResult orElse(),
   }) {
@@ -837,6 +867,7 @@ class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
     required TResult Function(int gender) genderChanged,
     required TResult Function(String phoneNumber) phoneNumberChanged,
     required TResult Function(String phoneNumberCode) phoneNumberCodeChanged,
+    required TResult Function(RequestMailRegisterEntity entity) apiLogin,
     required TResult Function() submit,
   }) {
     return phoneNumberChanged(phoneNumber);
@@ -851,6 +882,7 @@ class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
     TResult? Function(int gender)? genderChanged,
     TResult? Function(String phoneNumber)? phoneNumberChanged,
     TResult? Function(String phoneNumberCode)? phoneNumberCodeChanged,
+    TResult? Function(RequestMailRegisterEntity entity)? apiLogin,
     TResult? Function()? submit,
   }) {
     return phoneNumberChanged?.call(phoneNumber);
@@ -865,6 +897,7 @@ class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
     TResult Function(int gender)? genderChanged,
     TResult Function(String phoneNumber)? phoneNumberChanged,
     TResult Function(String phoneNumberCode)? phoneNumberCodeChanged,
+    TResult Function(RequestMailRegisterEntity entity)? apiLogin,
     TResult Function()? submit,
     required TResult orElse(),
   }) {
@@ -884,6 +917,7 @@ class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
     required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
     required TResult Function(_PhoneNumberCodeChanged value)
         phoneNumberCodeChanged,
+    required TResult Function(_ApiLogin value) apiLogin,
     required TResult Function(_Submit value) submit,
   }) {
     return phoneNumberChanged(this);
@@ -898,6 +932,7 @@ class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
     TResult? Function(_GenderChanged value)? genderChanged,
     TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult? Function(_PhoneNumberCodeChanged value)? phoneNumberCodeChanged,
+    TResult? Function(_ApiLogin value)? apiLogin,
     TResult? Function(_Submit value)? submit,
   }) {
     return phoneNumberChanged?.call(this);
@@ -912,6 +947,7 @@ class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
     TResult Function(_GenderChanged value)? genderChanged,
     TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult Function(_PhoneNumberCodeChanged value)? phoneNumberCodeChanged,
+    TResult Function(_ApiLogin value)? apiLogin,
     TResult Function(_Submit value)? submit,
     required TResult orElse(),
   }) {
@@ -1006,6 +1042,7 @@ class _$PhoneNumberCodeChangedImpl implements _PhoneNumberCodeChanged {
     required TResult Function(int gender) genderChanged,
     required TResult Function(String phoneNumber) phoneNumberChanged,
     required TResult Function(String phoneNumberCode) phoneNumberCodeChanged,
+    required TResult Function(RequestMailRegisterEntity entity) apiLogin,
     required TResult Function() submit,
   }) {
     return phoneNumberCodeChanged(phoneNumberCode);
@@ -1020,6 +1057,7 @@ class _$PhoneNumberCodeChangedImpl implements _PhoneNumberCodeChanged {
     TResult? Function(int gender)? genderChanged,
     TResult? Function(String phoneNumber)? phoneNumberChanged,
     TResult? Function(String phoneNumberCode)? phoneNumberCodeChanged,
+    TResult? Function(RequestMailRegisterEntity entity)? apiLogin,
     TResult? Function()? submit,
   }) {
     return phoneNumberCodeChanged?.call(phoneNumberCode);
@@ -1034,6 +1072,7 @@ class _$PhoneNumberCodeChangedImpl implements _PhoneNumberCodeChanged {
     TResult Function(int gender)? genderChanged,
     TResult Function(String phoneNumber)? phoneNumberChanged,
     TResult Function(String phoneNumberCode)? phoneNumberCodeChanged,
+    TResult Function(RequestMailRegisterEntity entity)? apiLogin,
     TResult Function()? submit,
     required TResult orElse(),
   }) {
@@ -1053,6 +1092,7 @@ class _$PhoneNumberCodeChangedImpl implements _PhoneNumberCodeChanged {
     required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
     required TResult Function(_PhoneNumberCodeChanged value)
         phoneNumberCodeChanged,
+    required TResult Function(_ApiLogin value) apiLogin,
     required TResult Function(_Submit value) submit,
   }) {
     return phoneNumberCodeChanged(this);
@@ -1067,6 +1107,7 @@ class _$PhoneNumberCodeChangedImpl implements _PhoneNumberCodeChanged {
     TResult? Function(_GenderChanged value)? genderChanged,
     TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult? Function(_PhoneNumberCodeChanged value)? phoneNumberCodeChanged,
+    TResult? Function(_ApiLogin value)? apiLogin,
     TResult? Function(_Submit value)? submit,
   }) {
     return phoneNumberCodeChanged?.call(this);
@@ -1081,6 +1122,7 @@ class _$PhoneNumberCodeChangedImpl implements _PhoneNumberCodeChanged {
     TResult Function(_GenderChanged value)? genderChanged,
     TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult Function(_PhoneNumberCodeChanged value)? phoneNumberCodeChanged,
+    TResult Function(_ApiLogin value)? apiLogin,
     TResult Function(_Submit value)? submit,
     required TResult orElse(),
   }) {
@@ -1099,6 +1141,187 @@ abstract class _PhoneNumberCodeChanged implements MailRegisterEvent {
   @JsonKey(ignore: true)
   _$$PhoneNumberCodeChangedImplCopyWith<_$PhoneNumberCodeChangedImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ApiLoginImplCopyWith<$Res> {
+  factory _$$ApiLoginImplCopyWith(
+          _$ApiLoginImpl value, $Res Function(_$ApiLoginImpl) then) =
+      __$$ApiLoginImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({RequestMailRegisterEntity entity});
+
+  $RequestMailRegisterEntityCopyWith<$Res> get entity;
+}
+
+/// @nodoc
+class __$$ApiLoginImplCopyWithImpl<$Res>
+    extends _$MailRegisterEventCopyWithImpl<$Res, _$ApiLoginImpl>
+    implements _$$ApiLoginImplCopyWith<$Res> {
+  __$$ApiLoginImplCopyWithImpl(
+      _$ApiLoginImpl _value, $Res Function(_$ApiLoginImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? entity = null,
+  }) {
+    return _then(_$ApiLoginImpl(
+      null == entity
+          ? _value.entity
+          : entity // ignore: cast_nullable_to_non_nullable
+              as RequestMailRegisterEntity,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RequestMailRegisterEntityCopyWith<$Res> get entity {
+    return $RequestMailRegisterEntityCopyWith<$Res>(_value.entity, (value) {
+      return _then(_value.copyWith(entity: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$ApiLoginImpl implements _ApiLogin {
+  const _$ApiLoginImpl(this.entity);
+
+  @override
+  final RequestMailRegisterEntity entity;
+
+  @override
+  String toString() {
+    return 'MailRegisterEvent.apiLogin(entity: $entity)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ApiLoginImpl &&
+            (identical(other.entity, entity) || other.entity == entity));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, entity);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ApiLoginImplCopyWith<_$ApiLoginImpl> get copyWith =>
+      __$$ApiLoginImplCopyWithImpl<_$ApiLoginImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email) emailChanged,
+    required TResult Function(String password) passwordChanged,
+    required TResult Function(String nickname) nicknameChanged,
+    required TResult Function(int gender) genderChanged,
+    required TResult Function(String phoneNumber) phoneNumberChanged,
+    required TResult Function(String phoneNumberCode) phoneNumberCodeChanged,
+    required TResult Function(RequestMailRegisterEntity entity) apiLogin,
+    required TResult Function() submit,
+  }) {
+    return apiLogin(entity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email)? emailChanged,
+    TResult? Function(String password)? passwordChanged,
+    TResult? Function(String nickname)? nicknameChanged,
+    TResult? Function(int gender)? genderChanged,
+    TResult? Function(String phoneNumber)? phoneNumberChanged,
+    TResult? Function(String phoneNumberCode)? phoneNumberCodeChanged,
+    TResult? Function(RequestMailRegisterEntity entity)? apiLogin,
+    TResult? Function()? submit,
+  }) {
+    return apiLogin?.call(entity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email)? emailChanged,
+    TResult Function(String password)? passwordChanged,
+    TResult Function(String nickname)? nicknameChanged,
+    TResult Function(int gender)? genderChanged,
+    TResult Function(String phoneNumber)? phoneNumberChanged,
+    TResult Function(String phoneNumberCode)? phoneNumberCodeChanged,
+    TResult Function(RequestMailRegisterEntity entity)? apiLogin,
+    TResult Function()? submit,
+    required TResult orElse(),
+  }) {
+    if (apiLogin != null) {
+      return apiLogin(entity);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EmailChanged value) emailChanged,
+    required TResult Function(_PasswordChanged value) passwordChanged,
+    required TResult Function(_NicknameChanged value) nicknameChanged,
+    required TResult Function(_GenderChanged value) genderChanged,
+    required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
+    required TResult Function(_PhoneNumberCodeChanged value)
+        phoneNumberCodeChanged,
+    required TResult Function(_ApiLogin value) apiLogin,
+    required TResult Function(_Submit value) submit,
+  }) {
+    return apiLogin(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_EmailChanged value)? emailChanged,
+    TResult? Function(_PasswordChanged value)? passwordChanged,
+    TResult? Function(_NicknameChanged value)? nicknameChanged,
+    TResult? Function(_GenderChanged value)? genderChanged,
+    TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
+    TResult? Function(_PhoneNumberCodeChanged value)? phoneNumberCodeChanged,
+    TResult? Function(_ApiLogin value)? apiLogin,
+    TResult? Function(_Submit value)? submit,
+  }) {
+    return apiLogin?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EmailChanged value)? emailChanged,
+    TResult Function(_PasswordChanged value)? passwordChanged,
+    TResult Function(_NicknameChanged value)? nicknameChanged,
+    TResult Function(_GenderChanged value)? genderChanged,
+    TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
+    TResult Function(_PhoneNumberCodeChanged value)? phoneNumberCodeChanged,
+    TResult Function(_ApiLogin value)? apiLogin,
+    TResult Function(_Submit value)? submit,
+    required TResult orElse(),
+  }) {
+    if (apiLogin != null) {
+      return apiLogin(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ApiLogin implements MailRegisterEvent {
+  const factory _ApiLogin(final RequestMailRegisterEntity entity) =
+      _$ApiLoginImpl;
+
+  RequestMailRegisterEntity get entity;
+  @JsonKey(ignore: true)
+  _$$ApiLoginImplCopyWith<_$ApiLoginImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1145,6 +1368,7 @@ class _$SubmitImpl implements _Submit {
     required TResult Function(int gender) genderChanged,
     required TResult Function(String phoneNumber) phoneNumberChanged,
     required TResult Function(String phoneNumberCode) phoneNumberCodeChanged,
+    required TResult Function(RequestMailRegisterEntity entity) apiLogin,
     required TResult Function() submit,
   }) {
     return submit();
@@ -1159,6 +1383,7 @@ class _$SubmitImpl implements _Submit {
     TResult? Function(int gender)? genderChanged,
     TResult? Function(String phoneNumber)? phoneNumberChanged,
     TResult? Function(String phoneNumberCode)? phoneNumberCodeChanged,
+    TResult? Function(RequestMailRegisterEntity entity)? apiLogin,
     TResult? Function()? submit,
   }) {
     return submit?.call();
@@ -1173,6 +1398,7 @@ class _$SubmitImpl implements _Submit {
     TResult Function(int gender)? genderChanged,
     TResult Function(String phoneNumber)? phoneNumberChanged,
     TResult Function(String phoneNumberCode)? phoneNumberCodeChanged,
+    TResult Function(RequestMailRegisterEntity entity)? apiLogin,
     TResult Function()? submit,
     required TResult orElse(),
   }) {
@@ -1192,6 +1418,7 @@ class _$SubmitImpl implements _Submit {
     required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
     required TResult Function(_PhoneNumberCodeChanged value)
         phoneNumberCodeChanged,
+    required TResult Function(_ApiLogin value) apiLogin,
     required TResult Function(_Submit value) submit,
   }) {
     return submit(this);
@@ -1206,6 +1433,7 @@ class _$SubmitImpl implements _Submit {
     TResult? Function(_GenderChanged value)? genderChanged,
     TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult? Function(_PhoneNumberCodeChanged value)? phoneNumberCodeChanged,
+    TResult? Function(_ApiLogin value)? apiLogin,
     TResult? Function(_Submit value)? submit,
   }) {
     return submit?.call(this);
@@ -1220,6 +1448,7 @@ class _$SubmitImpl implements _Submit {
     TResult Function(_GenderChanged value)? genderChanged,
     TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult Function(_PhoneNumberCodeChanged value)? phoneNumberCodeChanged,
+    TResult Function(_ApiLogin value)? apiLogin,
     TResult Function(_Submit value)? submit,
     required TResult orElse(),
   }) {

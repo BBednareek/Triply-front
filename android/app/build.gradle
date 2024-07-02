@@ -1,3 +1,34 @@
+buildscript {
+    ext.kotlin_version = '1.9.0'
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:7.4.2"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.buildDir = "../build"
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(":app")
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}
+
 plugins {
     id "com.android.application"
     id "kotlin-android"
@@ -36,20 +67,25 @@ android {
 
     defaultConfig {
         applicationId = "com.triply"
-        minSdk = 20
+        minSdk = 23
         targetSdk = flutter.targetSdkVersion
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
     }
 
-    dependencies{
-        implementation "org.jetbrains.kotlin:kotlin-stdlib:1.8.22"
-        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22"
-        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.22"
+    dependencies {
+        implementation "org.jetbrains.kotlin:kotlin-stdlib:1.9.0"
         implementation platform('com.google.firebase:firebase-bom:33.1.1')
         implementation 'com.google.firebase:firebase-analytics'
-        implementation("com.google.firebase:firebase-crashlytics")
+        implementation 'com.google.firebase:firebase-crashlytics'
+    }
 
+    configurations.all {
+        resolutionStrategy.eachDependency { details ->
+            if (details.requested.group == 'org.jetbrains.kotlin') {
+                details.useVersion "1.9.0"
+            }
+        }
     }
 
     buildTypes {

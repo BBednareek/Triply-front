@@ -14,5 +14,7 @@ abstract class MailRegisterEvent with _$MailRegisterEvent {
       _PhoneNumberChanged;
   const factory MailRegisterEvent.phoneNumberCodeChanged(
       final String phoneNumberCode) = _PhoneNumberCodeChanged;
+  const factory MailRegisterEvent.apiLogin(
+      final RequestMailRegisterEntity entity) = _ApiLogin;
   const factory MailRegisterEvent.submit() = _Submit;
 }

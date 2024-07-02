@@ -14,7 +14,7 @@ part 'mail_event.dart';
 part 'mail_state.dart';
 
 class MailLoginBloc extends Bloc<MailLoginEvent, MailLoginState> {
-  final MailApiUsecase mailApiUsecase;
+  final LoginMailApiUsecase mailApiUsecase;
 
   MailLoginBloc({required this.mailApiUsecase})
       : super(const MailLoginState()) {

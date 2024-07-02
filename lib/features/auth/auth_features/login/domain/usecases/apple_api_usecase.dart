@@ -6,10 +6,10 @@ import 'package:triply/features/auth/auth_features/shared/entities/apple_entity.
 import 'package:triply/features/auth/auth_features/shared/entities/login_result_entity.dart';
 
 @lazySingleton
-class AppleApiUsecase {
+class LoginAppleApiUsecase {
   final LoginRepository loginRepository;
 
-  AppleApiUsecase({required this.loginRepository});
+  LoginAppleApiUsecase({required this.loginRepository});
 
   Future<Either<Failure, LoginResultEntity>> call(
           AppleRequestEntity request) async =>

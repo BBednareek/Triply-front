@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:triply/features/auth/auth_features/loading/loader.dart';
 import 'package:triply/features/auth/auth_features/login/presentation/pages/login.dart';
+import 'package:triply/features/auth/auth_features/register/presentation/pages/register.dart';
 
 final List<RouteBase> authRoutes = [
   GoRoute(path: '/loading', builder: (_, __) => const Loader()),
@@ -10,10 +11,10 @@ final List<RouteBase> authRoutes = [
       routes: const <GoRoute>[
         /// [Implement Forgot Password screen]
       ]),
-  // GoRoute(
-  //     path: '/register',
-  //     builder: (_, __) => const Register(),
-  //     routes: const <GoRoute>[
-  //       /// [Implement Register form screen]
-  //     ]),
+  GoRoute(
+      path: '/register',
+      builder: (_, __) => const RegisterScreen(),
+      routes: const <GoRoute>[
+        /// [Implement Register form screen]
+      ]),
 ];

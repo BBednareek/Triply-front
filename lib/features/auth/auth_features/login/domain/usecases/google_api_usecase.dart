@@ -5,10 +5,10 @@ import 'package:triply/features/auth/auth_features/login/data/repository/login_r
 import 'package:triply/features/auth/auth_features/shared/entities/login_result_entity.dart';
 
 @lazySingleton
-class GoogleApiUsecase {
+class LoginGoogleApiUsecase {
   final LoginRepository loginRepository;
 
-  GoogleApiUsecase({required this.loginRepository});
+  LoginGoogleApiUsecase({required this.loginRepository});
 
   Future<Either<Failure, LoginResultEntity>> call(String accessToken) async =>
       await loginRepository.googleWithApi(accessToken);

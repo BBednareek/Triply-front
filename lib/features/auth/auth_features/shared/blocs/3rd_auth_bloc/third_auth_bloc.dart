@@ -7,6 +7,10 @@ import 'package:triply/features/auth/auth_features/login/domain/usecases/apple_a
 import 'package:triply/features/auth/auth_features/login/domain/usecases/apple_firebase_usecase.dart';
 import 'package:triply/features/auth/auth_features/login/domain/usecases/google_api_usecase.dart';
 import 'package:triply/features/auth/auth_features/login/domain/usecases/google_firebase_usecase.dart';
+import 'package:triply/features/auth/auth_features/register/domain/usecases/register_apple_api_usecase.dart';
+import 'package:triply/features/auth/auth_features/register/domain/usecases/register_apple_firebase_usecase.dart';
+import 'package:triply/features/auth/auth_features/register/domain/usecases/register_google_api_usecase.dart';
+import 'package:triply/features/auth/auth_features/register/domain/usecases/register_google_firebase_usecase.dart';
 import 'package:triply/features/auth/auth_features/shared/entities/apple_entity.dart';
 import 'package:triply/features/auth/auth_features/shared/entities/firebase_user_entity.dart';
 import 'package:triply/features/auth/auth_features/shared/entities/login_result_entity.dart';
@@ -17,17 +21,27 @@ part 'third_auth_event.dart';
 part 'third_auth_state.dart';
 
 class ThirdAuthBloc extends Bloc<ThirdAuthEvent, ThirdAuthState> {
-  final AppleApiUsecase appleApiUsecase;
-  final GoogleApiUsecase googleApiUsecase;
+  final LoginAppleApiUsecase loginAppleApiUsecase;
+  final LoginGoogleApiUsecase loginGoogleApiUsecase;
 
-  final AppleFirebaseUsecase appleFirebaseUsecase;
-  final GoogleFirebaseUsecase googleFirebaseUsecase;
+  final RegisterAppleApiUsecase registerAppleApiUsecase;
+  final RegisterGoogleApiUsecase registerGoogleApiUsecase;
+
+  final LoginAppleFirebaseUsecase loginAppleFirebaseUsecase;
+  final LoginGoogleFirebaseUsecase loginGoogleFirebaseUsecase;
+
+  final RegisterAppleFirebaseUsecase registerAppleFirebaseUsecase;
+  final RegisterGoogleFirebaseUsecase registerGoogleFirebaseUsecase;
 
   ThirdAuthBloc({
-    required this.appleApiUsecase,
-    required this.appleFirebaseUsecase,
-    required this.googleApiUsecase,
-    required this.googleFirebaseUsecase,
+    required this.loginAppleApiUsecase,
+    required this.loginGoogleApiUsecase,
+    required this.registerAppleApiUsecase,
+    required this.registerGoogleApiUsecase,
+    required this.loginAppleFirebaseUsecase,
+    required this.loginGoogleFirebaseUsecase,
+    required this.registerAppleFirebaseUsecase,
+    required this.registerGoogleFirebaseUsecase,
   }) : super(const _Initial()) {
     on<_GoogleApi>(_googleApi);
     on<_AppleApi>(_appleApi);
@@ -39,7 +53,7 @@ class ThirdAuthBloc extends Bloc<ThirdAuthEvent, ThirdAuthState> {
     final String accessToken = event.user.jwtToken;
 
     final Either<Failure, LoginResultEntity> result =
-        await googleApiUsecase.call(accessToken);
+        await loginGoogleApiUsecase.call(accessToken);
 
     result.fold((l) => emit(_Failure(l.message)), (r) async {
       locator<AuthCubit>().login(
@@ -54,7 +68,7 @@ class ThirdAuthBloc extends Bloc<ThirdAuthEvent, ThirdAuthState> {
   _googleFirebase(_GoogleFirebase event, Emitter<ThirdAuthState> emit) async {
     emit(const _Loading());
     final Either<Failure, FirebaseUserEntity> result =
-        await googleFirebaseUsecase.call();
+        await loginGoogleFirebaseUsecase.call();
 
     result.fold(
       (l) => emit(_Failure(l.message)),
@@ -67,7 +81,7 @@ class ThirdAuthBloc extends Bloc<ThirdAuthEvent, ThirdAuthState> {
         AppleRequestEntity.createByFirebaseToLogin(event.user);
 
     final Either<Failure, LoginResultEntity> result =
-        await appleApiUsecase.call(request);
+        await loginAppleApiUsecase.call(request);
 
     result.fold((l) => emit(_Failure(l.message)), (r) async {
       locator<AuthCubit>().login(
@@ -82,7 +96,7 @@ class ThirdAuthBloc extends Bloc<ThirdAuthEvent, ThirdAuthState> {
   _appleFirebase(_AppleFirebase event, Emitter<ThirdAuthState> emit) async {
     emit(const _Loading());
     final Either<Failure, FirebaseUserEntity> result =
-        await appleFirebaseUsecase.call();
+        await loginAppleFirebaseUsecase.call();
 
     result.fold(
       (l) => emit(_Failure(l.message)),

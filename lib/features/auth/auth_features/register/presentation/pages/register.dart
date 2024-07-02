@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:triply/core/constants/auth.dart';
+import 'package:triply/core/constants/routes.dart';
 import 'package:triply/core/di/injectable.dart';
 import 'package:triply/features/auth/auth_features/register/presentation/bloc/mail_register_bloc.dart';
-import 'package:triply/features/auth/auth_features/shared/blocs/authentication_blocs/3rd_auth_bloc/third_auth_bloc.dart';
+import 'package:triply/features/auth/auth_features/shared/blocs/3rd_auth_bloc/third_auth_bloc.dart';
+import 'package:triply/features/auth/auth_features/shared/widgets/mail_form.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
@@ -13,13 +17,20 @@ class RegisterScreen extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => ThirdAuthBloc(
-            appleApiUsecase: locator(),
-            appleFirebaseUsecase: locator(),
-            googleApiUsecase: locator(),
-            googleFirebaseUsecase: locator(),
+            registerAppleApiUsecase: locator(),
+            registerAppleFirebaseUsecase: locator(),
+            registerGoogleApiUsecase: locator(),
+            registerGoogleFirebaseUsecase: locator(),
+            loginAppleApiUsecase: locator(),
+            loginAppleFirebaseUsecase: locator(),
+            loginGoogleApiUsecase: locator(),
+            loginGoogleFirebaseUsecase: locator(),
           ),
         ),
-        BlocProvider(create: (context) => MailRegisterBloc())
+        BlocProvider(
+            create: (context) => MailRegisterBloc(
+                registerMailApiUsecase: locator(),
+                loginMailApiUsecase: locator()))
       ],
       child: const _RegisterScreen(),
     );
@@ -31,6 +42,40 @@ class _RegisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    final MailRegisterBloc mailRegisterBloc = context.read<MailRegisterBloc>();
+    final ThirdAuthBloc thirdAuthBloc = context.read<ThirdAuthBloc>();
+
+    final bool appType = Authentication.appType == "Android";
+
+    final String thirdPartyTitle = appType
+        ? "Zarejestruj się przez Google"
+        : "Zarejestruj się przez Apple";
+
+    final String thirdPartyLogoPath =
+        appType ? "assets/img/google.svg" : "assets/img/apple.svg";
+
+    final void thirdPartyMethod = appType
+        ? thirdAuthBloc.add(const ThirdAuthEvent.googleFirebase())
+        : thirdAuthBloc.add(const ThirdAuthEvent.appleFirebase());
+
+    return Scaffold(
+      body: SafeArea(
+        child: MailForm(
+          loginForm: false,
+          emailChanged: (value) =>
+              mailRegisterBloc.add(MailRegisterEvent.emailChanged(value)),
+          passwordChanged: (value) =>
+              mailRegisterBloc.add(MailRegisterEvent.passwordChanged(value)),
+          navigationMethod: () => context.go(Routes.login),
+          changeViewButtonText: "Logowanie",
+          //TODO next screen
+          submittedMethod: () => context.go("Next form"),
+          submittedText: "Przejdź dalej",
+          thirdPartyLogoPath: thirdPartyLogoPath,
+          thirdPartyTitle: thirdPartyTitle,
+          thirdPartyMethod: () => thirdPartyMethod,
+        ),
+      ),
+    );
   }
 }

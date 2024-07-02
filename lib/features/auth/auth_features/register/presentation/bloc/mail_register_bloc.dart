@@ -1,19 +1,35 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:triply/core/di/injectable.dart';
+import 'package:triply/core/network/error/failures.dart';
+import 'package:triply/features/auth/auth_features/login/domain/entities/login_mail_entity.dart';
+import 'package:triply/features/auth/auth_features/login/domain/usecases/mail_api_usecase.dart';
 import 'package:triply/features/auth/auth_features/register/domain/entities/request_register_entity.dart';
+import 'package:triply/features/auth/auth_features/register/domain/entities/response_register_entity.dart';
+import 'package:triply/features/auth/auth_features/register/domain/usecases/register_mail_api_usecase.dart';
+import 'package:triply/features/auth/auth_features/shared/entities/login_result_entity.dart';
+import 'package:triply/features/auth/cubit/auth_cubit.dart';
 
 part 'mail_register_bloc.freezed.dart';
 part 'mail_register_event.dart';
 part 'mail_register_state.dart';
 
 class MailRegisterBloc extends Bloc<MailRegisterEvent, MailRegisterState> {
-  MailRegisterBloc() : super(const MailRegisterState()) {
+  final RegisterMailApiUsecase registerMailApiUsecase;
+  final LoginMailApiUsecase loginMailApiUsecase;
+
+  MailRegisterBloc({
+    required this.registerMailApiUsecase,
+    required this.loginMailApiUsecase,
+  }) : super(const MailRegisterState()) {
     on<_EmailChanged>(_emailChanged);
     on<_PasswordChanged>(_passwordChanged);
     on<_NicknameChanged>(_nicknameChanged);
     on<_GenderChanged>(_genderChanged);
     on<_PhoneNumberCodeChanged>(_phoneNumberCodeChanged);
     on<_PhoneNumberChanged>(_phoneNumberChanged);
+    on<_ApiLogin>(_apiLogin);
     on<_Submit>(_submit);
   }
 
@@ -48,5 +64,30 @@ class MailRegisterBloc extends Bloc<MailRegisterEvent, MailRegisterState> {
       nickname: state.nickname,
       gender: state.gender,
     );
+
+    final Either<Failure, ResponseRegisterEntity> result =
+        await registerMailApiUsecase.call(entity: request);
+
+    result.fold(
+      (l) => emit(state.copyWith(errorMessage: l.message)),
+      (r) => _ApiLogin(request),
+    );
+  }
+
+  void _apiLogin(_ApiLogin event, Emitter<MailRegisterState> emit) async {
+    final LoginMailEntity loginMailEntity = LoginMailEntity(
+      email: state.email,
+      password: state.password,
+    );
+    final Either<Failure, LoginResultEntity> result =
+        await loginMailApiUsecase.call(loginMailEntity);
+
+    result.fold(
+        (l) => emit(state.copyWith(errorMessage: l.message)),
+        (r) => locator<AuthCubit>().login(
+              accessToken: r.accessToken,
+              userId: r.userId,
+              loginType: "Email",
+            ));
   }
 }

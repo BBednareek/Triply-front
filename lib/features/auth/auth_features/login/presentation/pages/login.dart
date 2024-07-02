@@ -6,7 +6,7 @@ import 'package:triply/core/constants/images.dart';
 import 'package:triply/core/constants/routes.dart';
 import 'package:triply/core/di/injectable.dart';
 import 'package:triply/features/auth/auth_features/login/presentation/bloc/mail_bloc.dart';
-import 'package:triply/features/auth/auth_features/shared/blocs/authentication_blocs/3rd_auth_bloc/third_auth_bloc.dart';
+import 'package:triply/features/auth/auth_features/shared/blocs/3rd_auth_bloc/third_auth_bloc.dart';
 import 'package:triply/features/auth/auth_features/shared/widgets/mail_form.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -18,10 +18,14 @@ class LoginScreen extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => ThirdAuthBloc(
-            appleApiUsecase: locator(),
-            appleFirebaseUsecase: locator(),
-            googleApiUsecase: locator(),
-            googleFirebaseUsecase: locator(),
+            registerAppleApiUsecase: locator(),
+            registerAppleFirebaseUsecase: locator(),
+            registerGoogleApiUsecase: locator(),
+            registerGoogleFirebaseUsecase: locator(),
+            loginAppleApiUsecase: locator(),
+            loginAppleFirebaseUsecase: locator(),
+            loginGoogleApiUsecase: locator(),
+            loginGoogleFirebaseUsecase: locator(),
           ),
         ),
         BlocProvider(

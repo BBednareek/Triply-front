@@ -5,10 +5,10 @@ import 'package:triply/features/auth/auth_features/login/data/repository/login_r
 import 'package:triply/features/auth/auth_features/shared/entities/firebase_user_entity.dart';
 
 @lazySingleton
-class AppleFirebaseUsecase {
+class LoginAppleFirebaseUsecase {
   final LoginRepository loginRepository;
 
-  AppleFirebaseUsecase({required this.loginRepository});
+  LoginAppleFirebaseUsecase({required this.loginRepository});
 
   Future<Either<Failure, FirebaseUserEntity>> call() async =>
       await loginRepository.appleWithFirebase();
