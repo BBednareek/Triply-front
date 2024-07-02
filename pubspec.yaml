@@ -29,6 +29,8 @@ dependencies:
 
   skeletonizer: ^1.3.0
   chucker_flutter: ^1.7.2
+  google_fonts: ^6.2.1 
+  flutter_svg: ^2.0.10+1
 
   equatable: ^2.0.5
   flutter_secure_storage: ^9.2.2
@@ -48,12 +50,14 @@ dependencies:
   google_sign_in: ^6.2.1
   the_apple_sign_in: ^1.1.1
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^3.0.2
   build_runner: ^2.4.11
+  json_serializable: ^6.6.0
   injectable_generator: ^2.6.1
   flutter_native_splash: ^2.4.0
 

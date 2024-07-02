@@ -8,7 +8,7 @@ import 'package:triply/features/auth/auth_features/login/data/datasource/login_d
 import 'package:triply/features/auth/auth_features/login/domain/entities/login_mail_entity.dart';
 import 'package:triply/features/auth/auth_features/shared/entities/apple_entity.dart';
 import 'package:triply/features/auth/auth_features/shared/entities/firebase_user_entity.dart';
-import 'package:triply/features/auth/auth_features/shared/entities/login_entity.dart';
+import 'package:triply/features/auth/auth_features/shared/entities/login_result_entity.dart';
 
 abstract class LoginRepository {
   Future<Either<Failure, LoginResultEntity>> mailWithApi(

@@ -13,8 +13,10 @@ class ThemeColors extends Constants {
   static const Color lightGrey = Color(0xFFE4E4E4);
 
   ///   [Font colors]
-  static const Color ligthFontBlue = Color(0xFF352555);
-  static const Color ligthFontGrey = Color(0xFF97ADB6);
+  static const Color onBaseGreen = Color(0xFFFFFFFF);
+  static const Color lightFontBlue = Color(0xFF352555);
+  static const Color lightFontGrey = Color(0xFF97ADB6);
+  static const Color infoFontColor = Color(0xFFAFBFBC);
 
   /// [For both]
   ///   [Button colors]

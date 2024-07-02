@@ -1,12 +1,15 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:triply/core/di/injectable.dart';
 import 'package:triply/core/network/error/failures.dart';
 import 'package:triply/features/auth/auth_features/login/domain/usecases/apple_api_usecase.dart';
 import 'package:triply/features/auth/auth_features/login/domain/usecases/apple_firebase_usecase.dart';
 import 'package:triply/features/auth/auth_features/login/domain/usecases/google_api_usecase.dart';
 import 'package:triply/features/auth/auth_features/login/domain/usecases/google_firebase_usecase.dart';
+import 'package:triply/features/auth/auth_features/shared/entities/apple_entity.dart';
 import 'package:triply/features/auth/auth_features/shared/entities/firebase_user_entity.dart';
+import 'package:triply/features/auth/auth_features/shared/entities/login_result_entity.dart';
 import 'package:triply/features/auth/cubit/auth_cubit.dart';
 
 part 'third_auth_bloc.freezed.dart';
@@ -34,7 +37,9 @@ class ThirdAuthBloc extends Bloc<ThirdAuthEvent, ThirdAuthState> {
 
   _googleApi(_GoogleApi event, Emitter<ThirdAuthState> emit) async {
     final String accessToken = event.user.jwtToken;
-    final Either<Failure, void> result = await googleApiUsecase.call();
+
+    final Either<Failure, LoginResultEntity> result =
+        await googleApiUsecase.call(accessToken);
 
     result.fold((l) => emit(_Failure(l.message)), (r) async {
       locator<AuthCubit>().login(
@@ -48,7 +53,8 @@ class ThirdAuthBloc extends Bloc<ThirdAuthEvent, ThirdAuthState> {
 
   _googleFirebase(_GoogleFirebase event, Emitter<ThirdAuthState> emit) async {
     emit(const _Loading());
-    final Either<Failure, void> result = await googleFirebaseUsecase.call();
+    final Either<Failure, FirebaseUserEntity> result =
+        await googleFirebaseUsecase.call();
 
     result.fold(
       (l) => emit(_Failure(l.message)),
@@ -57,8 +63,11 @@ class ThirdAuthBloc extends Bloc<ThirdAuthEvent, ThirdAuthState> {
   }
 
   _appleApi(_AppleApi event, Emitter<ThirdAuthState> emit) async {
-    final String accessToken = event.user.jwtToken;
-    final Either<Failure, void> result = await appleApiUsecase.call();
+    final AppleRequestEntity request =
+        AppleRequestEntity.createByFirebaseToLogin(event.user);
+
+    final Either<Failure, LoginResultEntity> result =
+        await appleApiUsecase.call(request);
 
     result.fold((l) => emit(_Failure(l.message)), (r) async {
       locator<AuthCubit>().login(
@@ -72,7 +81,8 @@ class ThirdAuthBloc extends Bloc<ThirdAuthEvent, ThirdAuthState> {
 
   _appleFirebase(_AppleFirebase event, Emitter<ThirdAuthState> emit) async {
     emit(const _Loading());
-    final Either<Failure, void> result = await appleFirebaseUsecase.call();
+    final Either<Failure, FirebaseUserEntity> result =
+        await appleFirebaseUsecase.call();
 
     result.fold(
       (l) => emit(_Failure(l.message)),

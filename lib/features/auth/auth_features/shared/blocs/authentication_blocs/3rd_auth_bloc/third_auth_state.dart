@@ -1,5 +1,6 @@
 part of 'third_auth_bloc.dart';
 
+@freezed
 abstract class ThirdAuthState with _$ThirdAuthState {
   const factory ThirdAuthState.initial() = _Initial;
   const factory ThirdAuthState.loading() = _Loading;

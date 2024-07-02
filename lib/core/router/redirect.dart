@@ -9,7 +9,7 @@ Future<String?> redirect(BuildContext context, GoRouterState state) async {
   final String? fullPath = state.fullPath;
 
   final InternetBloc internetBloc = locator<InternetBloc>();
-  final lastRoute = internetBloc.state.lastRoute;
+  final String? lastRoute = internetBloc.state.lastRoute;
   if (internetBloc.state.noInternet) {
     if (lastRoute == null || lastRoute.isEmpty) {
       internetBloc.add(InternetEvent.lastRoute(fullPath ?? Routes.login));

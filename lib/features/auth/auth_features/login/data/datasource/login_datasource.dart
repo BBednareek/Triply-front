@@ -2,7 +2,7 @@ import 'package:injectable/injectable.dart';
 import 'package:triply/core/network/factory/dio_factory.dart';
 import 'package:triply/features/auth/auth_features/login/domain/entities/login_mail_entity.dart';
 import 'package:triply/features/auth/auth_features/shared/entities/apple_entity.dart';
-import 'package:triply/features/auth/auth_features/shared/entities/login_entity.dart';
+import 'package:triply/features/auth/auth_features/shared/entities/login_result_entity.dart';
 
 abstract class LoginDatasource {
   Future<LoginResultEntity> mailWithApi(LoginMailEntity entity);

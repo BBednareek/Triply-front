@@ -1,24 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:triply/core/theme/colors.dart';
 
 ThemeData lightTheme() => ThemeData(
       useMaterial3: true,
+      textTheme: GoogleFonts.quicksandTextTheme(),
       brightness: Brightness.light,
-      fontFamily: 'Quicksand',
-      textTheme: const TextTheme(
-        headlineSmall: TextStyle(fontWeight: FontWeight.w400),
-      ),
       scaffoldBackgroundColor: ThemeColors.lightBackground,
-      colorScheme: ColorScheme(
+      colorScheme: const ColorScheme(
         brightness: Brightness.light,
         primary: ThemeColors.baseGreen,
-        onPrimary: ,
-        secondary: secondary,
-        onSecondary: onSecondary,
-        error: error,
-        onError: onError,
-        surface: surface,
-        onSurface: onSurface,
+        onPrimary: ThemeColors.onBaseGreen,
+        secondary: ThemeColors.lightGrey,
+        onSecondary: ThemeColors.baseGreen,
+        error: ThemeColors.errorBackground,
+        onError: ThemeColors.errorText,
+        surface: ThemeColors.lightBackground,
+        onSurface: ThemeColors.infoFontColor,
       ),
     );
-ThemeData darkTheme() => ThemeData();
+
+//TODO darkTheme colors
+ThemeData darkTheme() => ThemeData(
+      useMaterial3: true,
+      textTheme: GoogleFonts.quicksandTextTheme(),
+      brightness: Brightness.light,
+      scaffoldBackgroundColor: ThemeColors.lightBackground,
+      colorScheme: const ColorScheme(
+        brightness: Brightness.light,
+        primary: ThemeColors.baseGreen,
+        onPrimary: ThemeColors.onBaseGreen,
+        secondary: ThemeColors.lightGrey,
+        onSecondary: ThemeColors.baseGreen,
+        error: ThemeColors.errorBackground,
+        onError: ThemeColors.errorText,
+        surface: ThemeColors.lightBackground,
+        onSurface: ThemeColors.infoFontColor,
+      ),
+    );

@@ -1,7 +1,7 @@
 part of 'mail_bloc.dart';
 
 @freezed
-abstract class MailLoginEvent with _MailLoginEvent {
+abstract class MailLoginEvent with _$MailLoginEvent {
   const factory MailLoginEvent.emailChanged(String email) = _EmailChanged;
   const factory MailLoginEvent.passwordChanged(String password) =
       _PasswordChanged;
