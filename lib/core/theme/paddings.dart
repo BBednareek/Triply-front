@@ -17,13 +17,7 @@ class Paddings extends Constants {
       EdgeInsets.symmetric(vertical: 8, horizontal: 40);
 
   /// [Only]
-  ///       [Top]
-  ///
-  ///       [Left]
-  ///
-  ///       [Right]
-  ///
-  ///       [Bottom]
+
   static const bottom26 = EdgeInsets.only(bottom: 26.0);
   static const bottom40 = EdgeInsets.only(bottom: 40.0);
 

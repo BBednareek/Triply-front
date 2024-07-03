@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:triply/core/extensions/context_extension.dart';
+import 'package:triply/core/theme/styles/text_styles/text_styles.dart';
 
 class InputFieldWidget extends StatelessWidget {
   const InputFieldWidget({
@@ -6,42 +8,42 @@ class InputFieldWidget extends StatelessWidget {
     required this.width,
     required this.isObscured,
     required this.onChanged,
-    required this.placeholder,
     required this.title,
   });
   final double width;
   final bool isObscured;
   final Function onChanged;
   final String title;
-  final String placeholder;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(
-          width: width,
-          height: 48,
-          child: TextFormField(
-            enabled: true,
-            initialValue: placeholder,
-            autocorrect: false,
-            autofocus: false,
-            onChanged: (onChange) => onChanged,
-            obscureText: isObscured,
-            style: const TextStyle(fontSize: 15),
-            decoration: InputDecoration(
-                hintText: title,
-                hintStyle:
-                    const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+        Text(
+          title,
+          style: context.textStyle(fontSize16Green),
+        ),
+        const SizedBox(height: 5),
+        Material(
+          shadowColor: Colors.black,
+          elevation: 20,
+          borderRadius: BorderRadius.circular(20),
+          child: SizedBox(
+            width: width,
+            height: 48,
+            child: TextFormField(
+              enabled: true,
+              autocorrect: false,
+              autofocus: false,
+              onChanged: (onChange) => onChanged,
+              obscureText: isObscured,
+              decoration: const InputDecoration(
                 enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                    width: 1,
-                    color: Colors.teal,
-                  ),
-                  borderRadius: BorderRadius.circular(15),
-                )),
+                  borderSide: BorderSide(color: Colors.transparent),
+                ),
+              ),
+            ),
           ),
         ),
       ],

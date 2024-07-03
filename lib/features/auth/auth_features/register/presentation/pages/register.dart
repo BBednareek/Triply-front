@@ -54,10 +54,6 @@ class _RegisterScreen extends StatelessWidget {
     final String thirdPartyLogoPath =
         appType ? "assets/img/google.svg" : "assets/img/apple.svg";
 
-    final void thirdPartyMethod = appType
-        ? thirdAuthBloc.add(const ThirdAuthEvent.googleFirebase())
-        : thirdAuthBloc.add(const ThirdAuthEvent.appleFirebase());
-
     return Scaffold(
       body: SafeArea(
         child: MailForm(
@@ -73,7 +69,9 @@ class _RegisterScreen extends StatelessWidget {
           submittedText: "Przejdź dalej",
           thirdPartyLogoPath: thirdPartyLogoPath,
           thirdPartyTitle: thirdPartyTitle,
-          thirdPartyMethod: () => thirdPartyMethod,
+          thirdPartyMethod: appType
+              ? () => thirdAuthBloc.add(const ThirdAuthEvent.googleFirebase())
+              : () => thirdAuthBloc.add(const ThirdAuthEvent.appleFirebase()),
         ),
       ),
     );

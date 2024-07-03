@@ -49,8 +49,6 @@ class Triply extends StatelessWidget {
                 BlocListener<AuthCubit, AuthState>(
                   listener: (context, state) => goRouter.refresh(),
                 ),
-
-                /// [Internet bloc implementation when endpoints will be available]
                 BlocListener<InternetBloc, InternetState>(
                   listener: (context, state) {
                     if (state.noInternet && state.lastRoute == null) {

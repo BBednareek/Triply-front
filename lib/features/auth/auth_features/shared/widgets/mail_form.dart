@@ -46,7 +46,7 @@ class MailForm extends StatelessWidget {
           Stack(
             children: <Widget>[
               Container(
-                height: height * .37,
+                height: height * .35,
                 decoration: Paddings.greyRadiusLeftRight100,
               ),
               Column(
@@ -57,7 +57,7 @@ class MailForm extends StatelessWidget {
                       alignment: Alignment.topRight,
                       child: TextButton(
                         style: TextButton.styleFrom(side: Paddings.greenBorder),
-                        onPressed: () => navigationMethod,
+                        onPressed: () => navigationMethod(),
                         child: Text(
                           changeViewButtonText,
                           style: context.textStyle(fontSize18Green),
@@ -83,20 +83,16 @@ class MailForm extends StatelessWidget {
                   ),
                   const SizedBox(height: 40),
                   InputFieldWidget(
-                    width: width * .9,
-                    isObscured: false,
-                    onChanged: emailChanged,
-                    placeholder: "Email",
-                    title: "Email",
-                  ),
+                      width: width * .9,
+                      isObscured: false,
+                      onChanged: emailChanged,
+                      title: "Wprowadź email:"),
                   const SizedBox(height: 20),
                   InputFieldWidget(
-                    width: width * .9,
-                    isObscured: true,
-                    onChanged: passwordChanged,
-                    placeholder: "Password",
-                    title: "Password",
-                  ),
+                      width: width * .9,
+                      isObscured: true,
+                      onChanged: passwordChanged,
+                      title: "Wprowadź hasło:"),
                   const SizedBox(height: 20),
                   LoginButton(
                     buttonTitle: submittedText,
@@ -115,7 +111,7 @@ class MailForm extends StatelessWidget {
                 )),
           const Spacer(),
           Padding(
-            padding: Paddings.all16,
+            padding: Paddings.bottom40,
             child: Column(
               children: <Widget>[
                 LoginButton(

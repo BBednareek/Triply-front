@@ -58,10 +58,6 @@ class _LoginScreen extends StatelessWidget {
         ? "Zarejestruj się przez Google"
         : "Zarejestruj się przez Apple";
 
-    final void thirdPartyMethod = appType
-        ? thirdAuthBloc.add(const ThirdAuthEvent.googleFirebase())
-        : thirdAuthBloc.add(const ThirdAuthEvent.appleFirebase());
-
     return Scaffold(
       body: SafeArea(
         child: BlocBuilder<MailLoginBloc, MailLoginState>(
@@ -81,7 +77,11 @@ class _LoginScreen extends StatelessWidget {
                   submittedText: "Zaloguj się",
                   thirdPartyLogoPath: logoPath,
                   thirdPartyTitle: thirdPartyTitle,
-                  thirdPartyMethod: () => thirdPartyMethod,
+                  thirdPartyMethod: appType
+                      ? () => thirdAuthBloc
+                          .add(const ThirdAuthEvent.googleFirebase())
+                      : () => thirdAuthBloc
+                          .add(const ThirdAuthEvent.appleFirebase()),
                 );
               },
             );

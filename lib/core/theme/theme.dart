@@ -5,6 +5,7 @@ import 'package:triply/core/theme/colors.dart';
 ThemeData lightTheme() => ThemeData(
       useMaterial3: true,
       textTheme: GoogleFonts.quicksandTextTheme(),
+      fontFamily: 'Quicksand',
       brightness: Brightness.light,
       scaffoldBackgroundColor: ThemeColors.lightBackground,
       colorScheme: const ColorScheme(

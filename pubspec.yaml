@@ -1,6 +1,8 @@
 name: triply
 description: "A new Flutter project."
+
 publish_to: 'none' 
+
 version: 1.0.0+1
 
 environment:
@@ -62,7 +64,7 @@ dev_dependencies:
   flutter_native_splash: ^2.4.0
 
 flutter_native_splash:
-  image: "assets/img/triply_icon_logo.jpg"
+  image: "assets/img/triply_logo.svg"
   android: true
   ios: true
 
