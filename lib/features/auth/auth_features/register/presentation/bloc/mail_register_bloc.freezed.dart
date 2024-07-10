@@ -1465,13 +1465,16 @@ abstract class _Submit implements MailRegisterEvent {
 
 /// @nodoc
 mixin _$MailRegisterState {
-  String get email => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
+  EmailValidator get email => throw _privateConstructorUsedError;
+  PasswordValidator get password => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
   String get phoneCode => throw _privateConstructorUsedError;
   String get nickname => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
+  String get emailError => throw _privateConstructorUsedError;
+  String get passwordError => throw _privateConstructorUsedError;
   int get gender => throw _privateConstructorUsedError;
+  bool get buttonAvailable => throw _privateConstructorUsedError;
   bool get submitted => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -1486,13 +1489,16 @@ abstract class $MailRegisterStateCopyWith<$Res> {
       _$MailRegisterStateCopyWithImpl<$Res, MailRegisterState>;
   @useResult
   $Res call(
-      {String email,
-      String password,
+      {EmailValidator email,
+      PasswordValidator password,
       String phoneNumber,
       String phoneCode,
       String nickname,
       String errorMessage,
+      String emailError,
+      String passwordError,
       int gender,
+      bool buttonAvailable,
       bool submitted});
 }
 
@@ -1515,18 +1521,21 @@ class _$MailRegisterStateCopyWithImpl<$Res, $Val extends MailRegisterState>
     Object? phoneCode = null,
     Object? nickname = null,
     Object? errorMessage = null,
+    Object? emailError = null,
+    Object? passwordError = null,
     Object? gender = null,
+    Object? buttonAvailable = null,
     Object? submitted = null,
   }) {
     return _then(_value.copyWith(
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as EmailValidator,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as String,
+              as PasswordValidator,
       phoneNumber: null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
@@ -1543,10 +1552,22 @@ class _$MailRegisterStateCopyWithImpl<$Res, $Val extends MailRegisterState>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      emailError: null == emailError
+          ? _value.emailError
+          : emailError // ignore: cast_nullable_to_non_nullable
+              as String,
+      passwordError: null == passwordError
+          ? _value.passwordError
+          : passwordError // ignore: cast_nullable_to_non_nullable
+              as String,
       gender: null == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as int,
+      buttonAvailable: null == buttonAvailable
+          ? _value.buttonAvailable
+          : buttonAvailable // ignore: cast_nullable_to_non_nullable
+              as bool,
       submitted: null == submitted
           ? _value.submitted
           : submitted // ignore: cast_nullable_to_non_nullable
@@ -1564,13 +1585,16 @@ abstract class _$$MailRegisterStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String email,
-      String password,
+      {EmailValidator email,
+      PasswordValidator password,
       String phoneNumber,
       String phoneCode,
       String nickname,
       String errorMessage,
+      String emailError,
+      String passwordError,
       int gender,
+      bool buttonAvailable,
       bool submitted});
 }
 
@@ -1591,18 +1615,21 @@ class __$$MailRegisterStateImplCopyWithImpl<$Res>
     Object? phoneCode = null,
     Object? nickname = null,
     Object? errorMessage = null,
+    Object? emailError = null,
+    Object? passwordError = null,
     Object? gender = null,
+    Object? buttonAvailable = null,
     Object? submitted = null,
   }) {
     return _then(_$MailRegisterStateImpl(
       null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as EmailValidator,
       null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as String,
+              as PasswordValidator,
       null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
@@ -1619,10 +1646,22 @@ class __$$MailRegisterStateImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      null == emailError
+          ? _value.emailError
+          : emailError // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == passwordError
+          ? _value.passwordError
+          : passwordError // ignore: cast_nullable_to_non_nullable
+              as String,
       null == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as int,
+      null == buttonAvailable
+          ? _value.buttonAvailable
+          : buttonAvailable // ignore: cast_nullable_to_non_nullable
+              as bool,
       null == submitted
           ? _value.submitted
           : submitted // ignore: cast_nullable_to_non_nullable
@@ -1635,21 +1674,24 @@ class __$$MailRegisterStateImplCopyWithImpl<$Res>
 
 class _$MailRegisterStateImpl implements _MailRegisterState {
   const _$MailRegisterStateImpl(
-      [this.email = "",
-      this.password = "",
+      [this.email = const EmailValidator.pure(),
+      this.password = const PasswordValidator.pure(),
       this.phoneNumber = "",
       this.phoneCode = "",
       this.nickname = "",
       this.errorMessage = "",
+      this.emailError = "",
+      this.passwordError = "",
       this.gender = 0,
+      this.buttonAvailable = false,
       this.submitted = false]);
 
   @override
   @JsonKey()
-  final String email;
+  final EmailValidator email;
   @override
   @JsonKey()
-  final String password;
+  final PasswordValidator password;
   @override
   @JsonKey()
   final String phoneNumber;
@@ -1664,14 +1706,23 @@ class _$MailRegisterStateImpl implements _MailRegisterState {
   final String errorMessage;
   @override
   @JsonKey()
+  final String emailError;
+  @override
+  @JsonKey()
+  final String passwordError;
+  @override
+  @JsonKey()
   final int gender;
+  @override
+  @JsonKey()
+  final bool buttonAvailable;
   @override
   @JsonKey()
   final bool submitted;
 
   @override
   String toString() {
-    return 'MailRegisterState(email: $email, password: $password, phoneNumber: $phoneNumber, phoneCode: $phoneCode, nickname: $nickname, errorMessage: $errorMessage, gender: $gender, submitted: $submitted)';
+    return 'MailRegisterState(email: $email, password: $password, phoneNumber: $phoneNumber, phoneCode: $phoneCode, nickname: $nickname, errorMessage: $errorMessage, emailError: $emailError, passwordError: $passwordError, gender: $gender, buttonAvailable: $buttonAvailable, submitted: $submitted)';
   }
 
   @override
@@ -1690,14 +1741,31 @@ class _$MailRegisterStateImpl implements _MailRegisterState {
                 other.nickname == nickname) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
+            (identical(other.emailError, emailError) ||
+                other.emailError == emailError) &&
+            (identical(other.passwordError, passwordError) ||
+                other.passwordError == passwordError) &&
             (identical(other.gender, gender) || other.gender == gender) &&
+            (identical(other.buttonAvailable, buttonAvailable) ||
+                other.buttonAvailable == buttonAvailable) &&
             (identical(other.submitted, submitted) ||
                 other.submitted == submitted));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email, password, phoneNumber,
-      phoneCode, nickname, errorMessage, gender, submitted);
+  int get hashCode => Object.hash(
+      runtimeType,
+      email,
+      password,
+      phoneNumber,
+      phoneCode,
+      nickname,
+      errorMessage,
+      emailError,
+      passwordError,
+      gender,
+      buttonAvailable,
+      submitted);
 
   @JsonKey(ignore: true)
   @override
@@ -1709,19 +1777,22 @@ class _$MailRegisterStateImpl implements _MailRegisterState {
 
 abstract class _MailRegisterState implements MailRegisterState {
   const factory _MailRegisterState(
-      [final String email,
-      final String password,
+      [final EmailValidator email,
+      final PasswordValidator password,
       final String phoneNumber,
       final String phoneCode,
       final String nickname,
       final String errorMessage,
+      final String emailError,
+      final String passwordError,
       final int gender,
+      final bool buttonAvailable,
       final bool submitted]) = _$MailRegisterStateImpl;
 
   @override
-  String get email;
+  EmailValidator get email;
   @override
-  String get password;
+  PasswordValidator get password;
   @override
   String get phoneNumber;
   @override
@@ -1731,7 +1802,13 @@ abstract class _MailRegisterState implements MailRegisterState {
   @override
   String get errorMessage;
   @override
+  String get emailError;
+  @override
+  String get passwordError;
+  @override
   int get gender;
+  @override
+  bool get buttonAvailable;
   @override
   bool get submitted;
   @override

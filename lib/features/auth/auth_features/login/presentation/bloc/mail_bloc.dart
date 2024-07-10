@@ -34,6 +34,7 @@ class MailLoginBloc extends Bloc<MailLoginEvent, MailLoginState> {
       email: state.email,
       password: state.password,
     );
+
     final Either<Failure, LoginResultEntity> result =
         await mailApiUsecase.call(loginMailEntity);
 

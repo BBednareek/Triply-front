@@ -52,5 +52,5 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<String> getLoginType() async =>
-      await secureStorageService.readSecureData(Secures.loginType) ?? "mail";
+      await secureStorageService.readSecureData(Secures.loginType) ?? "Email";
 }

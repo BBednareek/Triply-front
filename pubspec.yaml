@@ -33,6 +33,7 @@ dependencies:
   chucker_flutter: ^1.7.2
   google_fonts: ^6.2.1 
   flutter_svg: ^2.0.10+1
+  gap: ^3.0.1
 
   equatable: ^2.0.5
   flutter_secure_storage: ^9.2.2

@@ -8,7 +8,9 @@ import 'package:triply/features/auth/auth_features/login/domain/usecases/mail_ap
 import 'package:triply/features/auth/auth_features/register/domain/entities/request_register_entity.dart';
 import 'package:triply/features/auth/auth_features/register/domain/entities/response_register_entity.dart';
 import 'package:triply/features/auth/auth_features/register/domain/usecases/register_mail_api_usecase.dart';
+import 'package:triply/features/auth/auth_features/shared/entities/email_validator.dart';
 import 'package:triply/features/auth/auth_features/shared/entities/login_result_entity.dart';
+import 'package:triply/features/auth/auth_features/shared/entities/password_validator.dart';
 import 'package:triply/features/auth/cubit/auth_cubit.dart';
 
 part 'mail_register_bloc.freezed.dart';
@@ -33,12 +35,35 @@ class MailRegisterBloc extends Bloc<MailRegisterEvent, MailRegisterState> {
     on<_Submit>(_submit);
   }
 
-  void _emailChanged(_EmailChanged event, Emitter<MailRegisterState> emit) =>
-      emit(state.copyWith(email: event.email));
+  void _emailChanged(_EmailChanged event, Emitter<MailRegisterState> emit) {
+    final EmailValidator emailValidator = EmailValidator.dirty(event.email);
+    String emailError = "";
+
+    if (emailValidator.displayError != null) {
+      emailError = emailValidator.displayError!;
+    }
+
+    emit(state.copyWith(
+      email: emailValidator,
+      emailError: emailError,
+    ));
+  }
 
   void _passwordChanged(
-          _PasswordChanged event, Emitter<MailRegisterState> emit) =>
-      emit(state.copyWith(password: event.password));
+      _PasswordChanged event, Emitter<MailRegisterState> emit) {
+    final PasswordValidator passwordValidator =
+        PasswordValidator.dirty(event.password);
+
+    String passwordError = "";
+
+    if (passwordValidator.displayError != null) {
+      passwordError = passwordValidator.displayError!;
+    }
+    emit(state.copyWith(
+      password: passwordValidator,
+      passwordError: passwordError,
+    ));
+  }
 
   void _nicknameChanged(
           _NicknameChanged event, Emitter<MailRegisterState> emit) =>
@@ -55,10 +80,10 @@ class MailRegisterBloc extends Bloc<MailRegisterEvent, MailRegisterState> {
           _PhoneNumberCodeChanged event, Emitter<MailRegisterState> emit) =>
       emit(state.copyWith(phoneCode: event.phoneNumberCode));
 
-  void _submit(_Submit event, Emitter<MailRegisterState> emit) async {
+  Future<void> _submit(_Submit event, Emitter<MailRegisterState> emit) async {
     final RequestMailRegisterEntity request = RequestMailRegisterEntity(
-      email: state.email,
-      password: state.password,
+      email: state.email.value,
+      password: state.password.value,
       phoneNumber: state.phoneNumber,
       phoneNumberCode: state.phoneCode,
       nickname: state.nickname,
@@ -74,10 +99,11 @@ class MailRegisterBloc extends Bloc<MailRegisterEvent, MailRegisterState> {
     );
   }
 
-  void _apiLogin(_ApiLogin event, Emitter<MailRegisterState> emit) async {
+  Future<void> _apiLogin(
+      _ApiLogin event, Emitter<MailRegisterState> emit) async {
     final LoginMailEntity loginMailEntity = LoginMailEntity(
-      email: state.email,
-      password: state.password,
+      email: state.email.value,
+      password: state.password.value,
     );
     final Either<Failure, LoginResultEntity> result =
         await loginMailApiUsecase.call(loginMailEntity);

@@ -20,10 +20,13 @@ const TextStyle fontSize18Weight600White = TextStyle(
   color: Colors.white,
 );
 
-const TextStyle fontSize16W400grey = TextStyle(
-    fontSize: 16, fontWeight: FontWeight.w400, color: ThemeColors.lightGrey);
+const TextStyle fontSize16W500grey = TextStyle(
+    fontSize: 16, fontWeight: FontWeight.w500, color: ThemeColors.lightGrey);
 
 const TextStyle fontSize16Green =
     TextStyle(color: ThemeColors.baseGreen, fontSize: 16);
 
 const TextStyle fontSize18Green = TextStyle(color: ThemeColors.baseGreen);
+
+const TextStyle fontSize12Weight800Red = TextStyle(
+    fontSize: 12, fontWeight: FontWeight.w800, color: ThemeColors.errorText);

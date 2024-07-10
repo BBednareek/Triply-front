@@ -6,7 +6,7 @@ class ThemeColors extends Constants {
 
   /// [Light theme colors]
   ///   [Background]
-  static const Color lightBackground = Color(0xFFEDF5FC);
+  static const Color lightBackground = Colors.white;
 
   ///   [Widget colors]
   static const Color darkBlue = Color(0xFF263238);

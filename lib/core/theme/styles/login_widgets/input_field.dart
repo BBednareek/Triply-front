@@ -12,7 +12,7 @@ class InputFieldWidget extends StatelessWidget {
   });
   final double width;
   final bool isObscured;
-  final Function onChanged;
+  final Function(String) onChanged;
   final String title;
 
   @override
@@ -27,18 +27,20 @@ class InputFieldWidget extends StatelessWidget {
         const SizedBox(height: 5),
         Material(
           shadowColor: Colors.black,
-          elevation: 20,
+          elevation: 5,
           borderRadius: BorderRadius.circular(20),
           child: SizedBox(
             width: width,
             height: 48,
             child: TextFormField(
-              enabled: true,
-              autocorrect: false,
+              autocorrect: true,
               autofocus: false,
-              onChanged: (onChange) => onChanged,
+              textAlign: TextAlign.center,
+              onChanged: onChanged,
               obscureText: isObscured,
               decoration: const InputDecoration(
+                border: InputBorder.none,
+                focusedBorder: InputBorder.none,
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.transparent),
                 ),

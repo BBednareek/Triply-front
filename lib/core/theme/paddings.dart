@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:triply/core/constants/constants.dart';
-import 'package:triply/core/theme/colors.dart';
 
 class Paddings extends Constants {
   /// [All]
 
+  static const all8 = EdgeInsets.all(8);
   static const all16 = EdgeInsets.all(16);
 
   /// [Horizontal]
@@ -24,18 +24,10 @@ class Paddings extends Constants {
   /// [Radius]
 
   /// [Circular]
+  static BorderRadiusGeometry circular10 = BorderRadius.circular(10);
   static BorderRadiusGeometry circular80 = BorderRadius.circular(80);
 
   /// [Only]
   static BorderRadiusGeometry radiusLeftRight100 = const BorderRadius.only(
-      bottomLeft: Radius.circular(100), bottomRight: Radius.circular(100));
-
-  /// [Custom]
-  static BoxDecoration greyRadiusLeftRight100 = BoxDecoration(
-    color: ThemeColors.lightGrey,
-    borderRadius: radiusLeftRight100,
-  );
-
-  static const BorderSide greenBorder =
-      BorderSide(color: ThemeColors.baseGreen);
+      bottomLeft: Radius.circular(180), bottomRight: Radius.circular(180));
 }
