@@ -6,9 +6,9 @@ import 'package:triply/core/constants/images.dart';
 import 'package:triply/core/constants/routes.dart';
 import 'package:triply/core/di/injectable.dart';
 import 'package:triply/core/theme/paddings.dart';
-import 'package:triply/core/theme/styles/login_widgets/input_field.dart';
 import 'package:triply/core/theme/styles/login_widgets/login_button.dart';
 import 'package:triply/core/theme/styles/login_widgets/third_auth_button.dart';
+import 'package:triply/core/theme/styles/shared/input_field.dart';
 import 'package:triply/features/auth/auth_features/register/presentation/bloc/mail_register_bloc.dart';
 import 'package:triply/features/auth/auth_features/shared/blocs/3rd_auth_bloc/third_auth_bloc.dart';
 import 'package:triply/features/auth/auth_features/shared/widgets/error_box.dart';
@@ -77,6 +77,7 @@ class _RegisterScreen extends StatelessWidget {
                             .add(MailRegisterEvent.emailChanged(value)),
                         title: "Wprowadź e-mail",
                       ),
+                      const SizedBox(height: 5),
                       ShowErrorMessage(
                         showMessage: mailState.emailError.isNotEmpty,
                         errorMessage: mailState.emailError,
@@ -90,6 +91,7 @@ class _RegisterScreen extends StatelessWidget {
                             .add(MailRegisterEvent.passwordChanged(value)),
                         title: "Wprowadź hasło",
                       ),
+                      const SizedBox(height: 5),
                       ShowErrorMessage(
                         showMessage: mailState.passwordError.isNotEmpty,
                         errorMessage: mailState.passwordError,

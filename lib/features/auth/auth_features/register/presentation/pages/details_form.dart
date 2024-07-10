@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:triply/core/theme/styles/login_widgets/input_field.dart';
+import 'package:triply/core/theme/styles/shared/input_field.dart';
+import 'package:triply/core/theme/styles/shared/reference_button.dart';
 import 'package:triply/features/auth/auth_features/register/presentation/bloc/mail_register_bloc.dart';
 import 'package:triply/features/auth/auth_features/shared/widgets/grey_container.dart';
 
@@ -36,13 +37,45 @@ class __DetailsFormState extends State<_DetailsForm> {
             const GreyContainer(
               buttonAvailable: false,
             ),
-            InputFieldWidget(
+            SizedBox(
               width: width * .8,
-              isObscured: false,
-              onChanged: (value) => context
-                  .read<MailRegisterBloc>()
-                  .add(MailRegisterEvent.nicknameChanged(value)),
-              title: "Podaj nazwę użytkownika",
+              child: Column(
+                children: [
+                  InputFieldWidget(
+                    width: width,
+                    isObscured: false,
+                    onChanged: (value) => context
+                        .read<MailRegisterBloc>()
+                        .add(MailRegisterEvent.nicknameChanged(value)),
+                    title: "Podaj nazwę użytkownika",
+                  ),
+                  const SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          children: [
+                            const Text("Wybierz kod krajowy"),
+                            ReferenceButton(
+                              width: width * .35,
+                              method: () {},
+                              text: "Kod",
+                            ),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        child: InputFieldWidget(
+                          width: width,
+                          isObscured: false,
+                          onChanged: (value) {},
+                          title: "Podaj numer",
+                        ),
+                      )
+                    ],
+                  ),
+                ],
+              ),
             ),
             SizedBox(
               height: 60,

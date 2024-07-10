@@ -2,6 +2,7 @@ import 'package:triply/core/constants/constants.dart';
 
 class Routes extends Constants {
   static const String noInternet = '/noInternet';
+  static const String confirmAccount = '/confirmAccount';
 
   static const String loading = '/loading';
 

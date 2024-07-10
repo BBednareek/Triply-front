@@ -217,6 +217,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.1"
+  country_picker:
+    dependency: "direct main"
+    description:
+      name: country_picker
+      sha256: "327f5e15a76352089a6b5057abb761ee5202e7516c9440d8d6a7524139f9b14e"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.26"
   cross_file:
     dependency: transitive
     description:
@@ -613,8 +621,24 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.3.1+1"
-  google_maps_flutter_android:
+  google_maps:
+    dependency: transitive
+    description:
+      name: google_maps
+      sha256: "47eef3836b49bb030d5cb3afc60b8451408bf34cf753e571b645d6529eb4251a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "7.1.0"
+  google_maps_flutter:
     dependency: "direct main"
+    description:
+      name: google_maps_flutter
+      sha256: acf0ec482d86b2ac55ade80597ce7f797a47971f5210ebfd030f0d58130e0a94
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.7.0"
+  google_maps_flutter_android:
+    dependency: transitive
     description:
       name: google_maps_flutter_android
       sha256: bfeab0c16630ba202cca1f9da80b8eb2922f2520195f7117056c36dabb79828f
@@ -622,7 +646,7 @@ packages:
     source: hosted
     version: "2.11.0"
   google_maps_flutter_ios:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: google_maps_flutter_ios
       sha256: "1043d0a4ad52612444b24edbd2d61f6de40e01e842fe2a9248be53fa70bc7047"
@@ -630,13 +654,21 @@ packages:
     source: hosted
     version: "2.8.1"
   google_maps_flutter_platform_interface:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: google_maps_flutter_platform_interface
       sha256: bd60ca330e3c7763b95b477054adec338a522d982af73ecc520b232474063ac5
       url: "https://pub.dev"
     source: hosted
     version: "2.8.0"
+  google_maps_flutter_web:
+    dependency: transitive
+    description:
+      name: google_maps_flutter_web
+      sha256: f3155c12119d8a5c2732fdf39ceb5cc095bc662059a03b4ea23294ecebe1d199
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.8"
   google_sign_in:
     dependency: "direct main"
     description:
@@ -789,6 +821,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.7"
+  js_wrapping:
+    dependency: transitive
+    description:
+      name: js_wrapping
+      sha256: e385980f7c76a8c1c9a560dfb623b890975841542471eade630b2871d243851c
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.4"
   json_annotation:
     dependency: transitive
     description:
@@ -973,6 +1013,54 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.1"
+  permission_handler:
+    dependency: "direct main"
+    description:
+      name: permission_handler
+      sha256: "18bf33f7fefbd812f37e72091a15575e72d5318854877e0e4035a24ac1113ecb"
+      url: "https://pub.dev"
+    source: hosted
+    version: "11.3.1"
+  permission_handler_android:
+    dependency: transitive
+    description:
+      name: permission_handler_android
+      sha256: b29a799ca03be9f999aa6c39f7de5209482d638e6f857f6b93b0875c618b7e54
+      url: "https://pub.dev"
+    source: hosted
+    version: "12.0.7"
+  permission_handler_apple:
+    dependency: transitive
+    description:
+      name: permission_handler_apple
+      sha256: e6f6d73b12438ef13e648c4ae56bd106ec60d17e90a59c4545db6781229082a0
+      url: "https://pub.dev"
+    source: hosted
+    version: "9.4.5"
+  permission_handler_html:
+    dependency: transitive
+    description:
+      name: permission_handler_html
+      sha256: "54bf176b90f6eddd4ece307e2c06cf977fb3973719c35a93b85cc7093eb6070d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.1"
+  permission_handler_platform_interface:
+    dependency: transitive
+    description:
+      name: permission_handler_platform_interface
+      sha256: "48d4fcf201a1dad93ee869ab0d4101d084f49136ec82a8a06ed9cfeacab9fd20"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.2.1"
+  permission_handler_windows:
+    dependency: transitive
+    description:
+      name: permission_handler_windows
+      sha256: "1a790728016f79a41216d88672dbc5df30e686e811ad4e698bfc51f76ad91f1e"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.1"
   petitparser:
     dependency: transitive
     description:
@@ -1053,6 +1141,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0"
+  sanitize_html:
+    dependency: transitive
+    description:
+      name: sanitize_html
+      sha256: "12669c4a913688a26555323fb9cec373d8f9fbe091f2d01c40c723b33caa8989"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
   share_plus:
     dependency: transitive
     description:

@@ -5,10 +5,12 @@ class Paddings extends Constants {
   /// [All]
 
   static const all8 = EdgeInsets.all(8);
+  static const all13 = EdgeInsets.all(13);
   static const all16 = EdgeInsets.all(16);
 
   /// [Horizontal]
-  static const horizontal15 = EdgeInsets.symmetric(horizontal: 15.0);
+  static const horizontal10 = EdgeInsets.symmetric(horizontal: 10);
+  static const horizontal15 = EdgeInsets.symmetric(horizontal: 15);
 
   /// [Vertical]
 
