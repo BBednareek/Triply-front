@@ -14,44 +14,50 @@ import 'package:triply/core/network/factory/dio_factory.dart' as _i8;
 import 'package:triply/core/router/bloc/router_bloc.dart' as _i4;
 import 'package:triply/core/storage/secure_storage.dart' as _i5;
 import 'package:triply/features/auth/auth_features/login/data/datasource/login_datasource.dart'
-    as _i13;
-import 'package:triply/features/auth/auth_features/login/data/repository/login_repository.dart'
-    as _i14;
-import 'package:triply/features/auth/auth_features/login/domain/usecases/apple_api_usecase.dart'
     as _i15;
-import 'package:triply/features/auth/auth_features/login/domain/usecases/apple_firebase_usecase.dart'
+import 'package:triply/features/auth/auth_features/login/data/repository/login_repository.dart'
     as _i16;
-import 'package:triply/features/auth/auth_features/login/domain/usecases/forgot_password_usecase.dart'
-    as _i20;
-import 'package:triply/features/auth/auth_features/login/domain/usecases/google_api_usecase.dart'
+import 'package:triply/features/auth/auth_features/login/domain/usecases/apple_api_usecase.dart'
     as _i17;
-import 'package:triply/features/auth/auth_features/login/domain/usecases/google_firebase_usecase.dart'
+import 'package:triply/features/auth/auth_features/login/domain/usecases/apple_firebase_usecase.dart'
     as _i18;
-import 'package:triply/features/auth/auth_features/login/domain/usecases/mail_api_usecase.dart'
+import 'package:triply/features/auth/auth_features/login/domain/usecases/forgot_password_usecase.dart'
+    as _i22;
+import 'package:triply/features/auth/auth_features/login/domain/usecases/google_api_usecase.dart'
     as _i19;
+import 'package:triply/features/auth/auth_features/login/domain/usecases/google_firebase_usecase.dart'
+    as _i20;
+import 'package:triply/features/auth/auth_features/login/domain/usecases/mail_api_usecase.dart'
+    as _i21;
 import 'package:triply/features/auth/auth_features/no_internet/internet_bloc.dart'
     as _i6;
 import 'package:triply/features/auth/auth_features/register/data/datasource/register_datasource.dart'
-    as _i10;
-import 'package:triply/features/auth/auth_features/register/data/repository/register_repository.dart'
     as _i11;
+import 'package:triply/features/auth/auth_features/register/data/repository/register_repository.dart'
+    as _i13;
 import 'package:triply/features/auth/auth_features/register/domain/usecases/register_apple_api_usecase.dart'
-    as _i22;
-import 'package:triply/features/auth/auth_features/register/domain/usecases/register_apple_firebase_usecase.dart'
-    as _i23;
-import 'package:triply/features/auth/auth_features/register/domain/usecases/register_google_api_usecase.dart'
-    as _i24;
-import 'package:triply/features/auth/auth_features/register/domain/usecases/register_google_firebase_usecase.dart'
     as _i25;
-import 'package:triply/features/auth/auth_features/register/domain/usecases/register_mail_api_usecase.dart'
+import 'package:triply/features/auth/auth_features/register/domain/usecases/register_apple_firebase_usecase.dart'
     as _i26;
+import 'package:triply/features/auth/auth_features/register/domain/usecases/register_google_api_usecase.dart'
+    as _i27;
+import 'package:triply/features/auth/auth_features/register/domain/usecases/register_google_firebase_usecase.dart'
+    as _i28;
+import 'package:triply/features/auth/auth_features/register/domain/usecases/register_mail_api_usecase.dart'
+    as _i29;
 import 'package:triply/features/auth/cubit/auth_cubit.dart' as _i7;
+import 'package:triply/features/settings/account/change_email/data/datasource/change_email_datasource.dart'
+    as _i10;
+import 'package:triply/features/settings/account/change_email/data/repository/change_email_repository.dart'
+    as _i12;
+import 'package:triply/features/settings/account/change_email/domain/usecases/change_email_usecase.dart'
+    as _i23;
 import 'package:triply/features/settings/switch_theme/cubit/theme_cubit.dart'
     as _i3;
-import 'package:triply/features/test/bloc/test_bloc.dart' as _i27;
+import 'package:triply/features/test/bloc/test_bloc.dart' as _i30;
 import 'package:triply/features/test/datasource/datasource.dart' as _i9;
-import 'package:triply/features/test/datasource/repository.dart' as _i12;
-import 'package:triply/features/test/datasource/usecase.dart' as _i21;
+import 'package:triply/features/test/datasource/repository.dart' as _i14;
+import 'package:triply/features/test/datasource/usecase.dart' as _i24;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -75,51 +81,58 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i8.DioFactoryImpl(authCubit: gh<_i7.AuthCubit>()));
     gh.lazySingleton<_i9.TestDatasource>(
         () => _i9.TestDatasourceImpl(dioFactory: gh<_i8.DioFactory>()));
-    gh.lazySingleton<_i10.RegisterDatasource>(
-        () => _i10.RegisterDatasourceImpl(dioFactory: gh<_i8.DioFactory>()));
-    gh.lazySingleton<_i11.RegisterRepository>(() => _i11.RegisterRepositoryImpl(
-        registerDatasource: gh<_i10.RegisterDatasource>()));
-    gh.lazySingleton<_i12.TestRepository>(() =>
-        _i12.TestRepositoryImpl(testDatasource: gh<_i9.TestDatasource>()));
-    gh.lazySingleton<_i13.LoginDatasource>(
-        () => _i13.LoginDatasourceImpl(dioFactory: gh<_i8.DioFactory>()));
-    gh.lazySingleton<_i14.LoginRepository>(() =>
-        _i14.LoginRepositoryImpl(loginDatasource: gh<_i13.LoginDatasource>()));
-    gh.lazySingleton<_i15.LoginAppleApiUsecase>(() =>
-        _i15.LoginAppleApiUsecase(loginRepository: gh<_i14.LoginRepository>()));
-    gh.lazySingleton<_i16.LoginAppleFirebaseUsecase>(() =>
-        _i16.LoginAppleFirebaseUsecase(
-            loginRepository: gh<_i14.LoginRepository>()));
-    gh.lazySingleton<_i17.LoginGoogleApiUsecase>(() =>
-        _i17.LoginGoogleApiUsecase(
-            loginRepository: gh<_i14.LoginRepository>()));
-    gh.lazySingleton<_i18.LoginGoogleFirebaseUsecase>(() =>
-        _i18.LoginGoogleFirebaseUsecase(
-            loginRepository: gh<_i14.LoginRepository>()));
-    gh.lazySingleton<_i19.LoginMailApiUsecase>(() =>
-        _i19.LoginMailApiUsecase(loginRepository: gh<_i14.LoginRepository>()));
-    gh.lazySingleton<_i20.ForgotPasswordUsecase>(() =>
-        _i20.ForgotPasswordUsecase(
-            loginRepository: gh<_i14.LoginRepository>()));
-    gh.lazySingleton<_i21.Usecase>(
-        () => _i21.Usecase(testRepository: gh<_i12.TestRepository>()));
-    gh.lazySingleton<_i22.RegisterAppleApiUsecase>(() =>
-        _i22.RegisterAppleApiUsecase(
-            registerRepository: gh<_i11.RegisterRepository>()));
-    gh.lazySingleton<_i23.RegisterAppleFirebaseUsecase>(() =>
-        _i23.RegisterAppleFirebaseUsecase(
-            registerRepository: gh<_i11.RegisterRepository>()));
-    gh.lazySingleton<_i24.RegisterGoogleApiUsecase>(() =>
-        _i24.RegisterGoogleApiUsecase(
-            registerRepository: gh<_i11.RegisterRepository>()));
-    gh.lazySingleton<_i25.RegisterGoogleFirebaseUsecase>(() =>
-        _i25.RegisterGoogleFirebaseUsecase(
-            registerRepository: gh<_i11.RegisterRepository>()));
-    gh.lazySingleton<_i26.RegisterMailApiUsecase>(() =>
-        _i26.RegisterMailApiUsecase(
-            registerRepository: gh<_i11.RegisterRepository>()));
-    gh.lazySingleton<_i27.TestBloc>(
-        () => _i27.TestBloc(usecase: gh<_i21.Usecase>()));
+    gh.lazySingleton<_i10.ChangeEmailDatasource>(
+        () => _i10.ChangeEmailDatasourceImpl(dioFactory: gh<_i8.DioFactory>()));
+    gh.lazySingleton<_i11.RegisterDatasource>(
+        () => _i11.RegisterDatasourceImpl(dioFactory: gh<_i8.DioFactory>()));
+    gh.lazySingleton<_i12.ChangeEmailRepository>(() =>
+        _i12.ChangeEmailRepositoryImpl(
+            changeEmailDatasource: gh<_i10.ChangeEmailDatasource>()));
+    gh.lazySingleton<_i13.RegisterRepository>(() => _i13.RegisterRepositoryImpl(
+        registerDatasource: gh<_i11.RegisterDatasource>()));
+    gh.lazySingleton<_i14.TestRepository>(() =>
+        _i14.TestRepositoryImpl(testDatasource: gh<_i9.TestDatasource>()));
+    gh.lazySingleton<_i15.LoginDatasource>(
+        () => _i15.LoginDatasourceImpl(dioFactory: gh<_i8.DioFactory>()));
+    gh.lazySingleton<_i16.LoginRepository>(() =>
+        _i16.LoginRepositoryImpl(loginDatasource: gh<_i15.LoginDatasource>()));
+    gh.lazySingleton<_i17.LoginAppleApiUsecase>(() =>
+        _i17.LoginAppleApiUsecase(loginRepository: gh<_i16.LoginRepository>()));
+    gh.lazySingleton<_i18.LoginAppleFirebaseUsecase>(() =>
+        _i18.LoginAppleFirebaseUsecase(
+            loginRepository: gh<_i16.LoginRepository>()));
+    gh.lazySingleton<_i19.LoginGoogleApiUsecase>(() =>
+        _i19.LoginGoogleApiUsecase(
+            loginRepository: gh<_i16.LoginRepository>()));
+    gh.lazySingleton<_i20.LoginGoogleFirebaseUsecase>(() =>
+        _i20.LoginGoogleFirebaseUsecase(
+            loginRepository: gh<_i16.LoginRepository>()));
+    gh.lazySingleton<_i21.LoginMailApiUsecase>(() =>
+        _i21.LoginMailApiUsecase(loginRepository: gh<_i16.LoginRepository>()));
+    gh.lazySingleton<_i22.ForgotPasswordUsecase>(() =>
+        _i22.ForgotPasswordUsecase(
+            loginRepository: gh<_i16.LoginRepository>()));
+    gh.lazySingleton<_i23.ChangeEmailUsecase>(() => _i23.ChangeEmailUsecase(
+        changeEmailRepository: gh<_i12.ChangeEmailRepository>()));
+    gh.lazySingleton<_i24.Usecase>(
+        () => _i24.Usecase(testRepository: gh<_i14.TestRepository>()));
+    gh.lazySingleton<_i25.RegisterAppleApiUsecase>(() =>
+        _i25.RegisterAppleApiUsecase(
+            registerRepository: gh<_i13.RegisterRepository>()));
+    gh.lazySingleton<_i26.RegisterAppleFirebaseUsecase>(() =>
+        _i26.RegisterAppleFirebaseUsecase(
+            registerRepository: gh<_i13.RegisterRepository>()));
+    gh.lazySingleton<_i27.RegisterGoogleApiUsecase>(() =>
+        _i27.RegisterGoogleApiUsecase(
+            registerRepository: gh<_i13.RegisterRepository>()));
+    gh.lazySingleton<_i28.RegisterGoogleFirebaseUsecase>(() =>
+        _i28.RegisterGoogleFirebaseUsecase(
+            registerRepository: gh<_i13.RegisterRepository>()));
+    gh.lazySingleton<_i29.RegisterMailApiUsecase>(() =>
+        _i29.RegisterMailApiUsecase(
+            registerRepository: gh<_i13.RegisterRepository>()));
+    gh.lazySingleton<_i30.TestBloc>(
+        () => _i30.TestBloc(usecase: gh<_i24.Usecase>()));
     return this;
   }
 }
