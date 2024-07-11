@@ -15,8 +15,7 @@ class ChangePasswordDatasourceImpl implements ChangePasswordDatasource {
   @override
   Future<void> changePassword({required ChangePasswordEntity entity}) async {
     try {
-      final Map<String, dynamic> result =
-          await dioFactory.post("", data: entity.toJson());
+      await dioFactory.post("", data: entity.toJson());
 
       return;
     } catch (e, st) {
