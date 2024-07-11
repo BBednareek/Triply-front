@@ -7,13 +7,13 @@ import 'package:triply/core/constants/routes.dart';
 import 'package:triply/core/di/injectable.dart';
 import 'package:triply/core/extensions/context_extension.dart';
 import 'package:triply/core/theme/paddings.dart';
+import 'package:triply/core/theme/styles/information_widgets/error_box.dart';
 import 'package:triply/core/theme/styles/login_widgets/login_button.dart';
 import 'package:triply/core/theme/styles/login_widgets/third_auth_button.dart';
 import 'package:triply/core/theme/styles/shared/input_field.dart';
 import 'package:triply/core/theme/styles/text_styles/text_styles.dart';
 import 'package:triply/features/auth/auth_features/login/presentation/bloc/mail_bloc.dart';
 import 'package:triply/features/auth/auth_features/shared/blocs/3rd_auth_bloc/third_auth_bloc.dart';
-import 'package:triply/features/auth/auth_features/shared/widgets/error_box.dart';
 import 'package:triply/features/auth/auth_features/shared/widgets/grey_container.dart';
 
 class LoginScreen extends StatelessWidget {
