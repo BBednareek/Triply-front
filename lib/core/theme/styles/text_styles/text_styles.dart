@@ -30,3 +30,6 @@ const TextStyle fontSize18Green = TextStyle(color: ThemeColors.baseGreen);
 
 const TextStyle fontSize12Weight800Red = TextStyle(
     fontSize: 12, fontWeight: FontWeight.w800, color: ThemeColors.errorText);
+
+const TextStyle fontSize12Weight800White = TextStyle(
+    fontSize: 12, fontWeight: FontWeight.w800, color: ThemeColors.onBaseGreen);
