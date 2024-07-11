@@ -12,6 +12,6 @@ class LoginMailApiUsecase {
   LoginMailApiUsecase({required this.loginRepository});
 
   Future<Either<Failure, LoginResultEntity>> call(
-          LoginMailEntity entity) async =>
-      await loginRepository.mailWithApi(entity);
+          {required LoginMailEntity entity}) async =>
+      await loginRepository.mailWithApi(entity: entity);
 }

@@ -134,7 +134,7 @@ class __$$EmailChangedImplCopyWithImpl<$Res>
     Object? email = null,
   }) {
     return _then(_$EmailChangedImpl(
-      null == email
+      email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
@@ -145,7 +145,7 @@ class __$$EmailChangedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EmailChangedImpl implements _EmailChanged {
-  const _$EmailChangedImpl(this.email);
+  const _$EmailChangedImpl({required this.email});
 
   @override
   final String email;
@@ -273,7 +273,8 @@ class _$EmailChangedImpl implements _EmailChanged {
 }
 
 abstract class _EmailChanged implements MailRegisterEvent {
-  const factory _EmailChanged(final String email) = _$EmailChangedImpl;
+  const factory _EmailChanged({required final String email}) =
+      _$EmailChangedImpl;
 
   String get email;
   @JsonKey(ignore: true)
@@ -304,7 +305,7 @@ class __$$PasswordChangedImplCopyWithImpl<$Res>
     Object? password = null,
   }) {
     return _then(_$PasswordChangedImpl(
-      null == password
+      password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
@@ -315,7 +316,7 @@ class __$$PasswordChangedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PasswordChangedImpl implements _PasswordChanged {
-  const _$PasswordChangedImpl(this.password);
+  const _$PasswordChangedImpl({required this.password});
 
   @override
   final String password;
@@ -445,7 +446,8 @@ class _$PasswordChangedImpl implements _PasswordChanged {
 }
 
 abstract class _PasswordChanged implements MailRegisterEvent {
-  const factory _PasswordChanged(final String password) = _$PasswordChangedImpl;
+  const factory _PasswordChanged({required final String password}) =
+      _$PasswordChangedImpl;
 
   String get password;
   @JsonKey(ignore: true)
@@ -476,7 +478,7 @@ class __$$NicknameChangedImplCopyWithImpl<$Res>
     Object? nickname = null,
   }) {
     return _then(_$NicknameChangedImpl(
-      null == nickname
+      nickname: null == nickname
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
               as String,
@@ -487,7 +489,7 @@ class __$$NicknameChangedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$NicknameChangedImpl implements _NicknameChanged {
-  const _$NicknameChangedImpl(this.nickname);
+  const _$NicknameChangedImpl({required this.nickname});
 
   @override
   final String nickname;
@@ -617,7 +619,8 @@ class _$NicknameChangedImpl implements _NicknameChanged {
 }
 
 abstract class _NicknameChanged implements MailRegisterEvent {
-  const factory _NicknameChanged(final String nickname) = _$NicknameChangedImpl;
+  const factory _NicknameChanged({required final String nickname}) =
+      _$NicknameChangedImpl;
 
   String get nickname;
   @JsonKey(ignore: true)
@@ -648,7 +651,7 @@ class __$$GenderChangedImplCopyWithImpl<$Res>
     Object? gender = null,
   }) {
     return _then(_$GenderChangedImpl(
-      null == gender
+      gender: null == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as int,
@@ -659,7 +662,7 @@ class __$$GenderChangedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GenderChangedImpl implements _GenderChanged {
-  const _$GenderChangedImpl(this.gender);
+  const _$GenderChangedImpl({required this.gender});
 
   @override
   final int gender;
@@ -787,7 +790,8 @@ class _$GenderChangedImpl implements _GenderChanged {
 }
 
 abstract class _GenderChanged implements MailRegisterEvent {
-  const factory _GenderChanged(final int gender) = _$GenderChangedImpl;
+  const factory _GenderChanged({required final int gender}) =
+      _$GenderChangedImpl;
 
   int get gender;
   @JsonKey(ignore: true)
@@ -818,7 +822,7 @@ class __$$PhoneNumberChangedImplCopyWithImpl<$Res>
     Object? phoneNumber = null,
   }) {
     return _then(_$PhoneNumberChangedImpl(
-      null == phoneNumber
+      phoneNumber: null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
@@ -829,7 +833,7 @@ class __$$PhoneNumberChangedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
-  const _$PhoneNumberChangedImpl(this.phoneNumber);
+  const _$PhoneNumberChangedImpl({required this.phoneNumber});
 
   @override
   final String phoneNumber;
@@ -959,7 +963,7 @@ class _$PhoneNumberChangedImpl implements _PhoneNumberChanged {
 }
 
 abstract class _PhoneNumberChanged implements MailRegisterEvent {
-  const factory _PhoneNumberChanged(final String phoneNumber) =
+  const factory _PhoneNumberChanged({required final String phoneNumber}) =
       _$PhoneNumberChangedImpl;
 
   String get phoneNumber;
@@ -993,7 +997,7 @@ class __$$PhoneNumberCodeChangedImplCopyWithImpl<$Res>
     Object? phoneNumberCode = null,
   }) {
     return _then(_$PhoneNumberCodeChangedImpl(
-      null == phoneNumberCode
+      phoneNumberCode: null == phoneNumberCode
           ? _value.phoneNumberCode
           : phoneNumberCode // ignore: cast_nullable_to_non_nullable
               as String,
@@ -1004,7 +1008,7 @@ class __$$PhoneNumberCodeChangedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PhoneNumberCodeChangedImpl implements _PhoneNumberCodeChanged {
-  const _$PhoneNumberCodeChangedImpl(this.phoneNumberCode);
+  const _$PhoneNumberCodeChangedImpl({required this.phoneNumberCode});
 
   @override
   final String phoneNumberCode;
@@ -1134,8 +1138,8 @@ class _$PhoneNumberCodeChangedImpl implements _PhoneNumberCodeChanged {
 }
 
 abstract class _PhoneNumberCodeChanged implements MailRegisterEvent {
-  const factory _PhoneNumberCodeChanged(final String phoneNumberCode) =
-      _$PhoneNumberCodeChangedImpl;
+  const factory _PhoneNumberCodeChanged(
+      {required final String phoneNumberCode}) = _$PhoneNumberCodeChangedImpl;
 
   String get phoneNumberCode;
   @JsonKey(ignore: true)
@@ -1168,7 +1172,7 @@ class __$$ApiLoginImplCopyWithImpl<$Res>
     Object? entity = null,
   }) {
     return _then(_$ApiLoginImpl(
-      null == entity
+      entity: null == entity
           ? _value.entity
           : entity // ignore: cast_nullable_to_non_nullable
               as RequestMailRegisterEntity,
@@ -1187,7 +1191,7 @@ class __$$ApiLoginImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ApiLoginImpl implements _ApiLogin {
-  const _$ApiLoginImpl(this.entity);
+  const _$ApiLoginImpl({required this.entity});
 
   @override
   final RequestMailRegisterEntity entity;
@@ -1315,7 +1319,7 @@ class _$ApiLoginImpl implements _ApiLogin {
 }
 
 abstract class _ApiLogin implements MailRegisterEvent {
-  const factory _ApiLogin(final RequestMailRegisterEntity entity) =
+  const factory _ApiLogin({required final RequestMailRegisterEntity entity}) =
       _$ApiLoginImpl;
 
   RequestMailRegisterEntity get entity;

@@ -12,6 +12,6 @@ class LoginAppleApiUsecase {
   LoginAppleApiUsecase({required this.loginRepository});
 
   Future<Either<Failure, LoginResultEntity>> call(
-          AppleRequestEntity request) async =>
-      await loginRepository.appleWithApi(request);
+          {required AppleRequestEntity request}) async =>
+      await loginRepository.appleWithApi(request: request);
 }

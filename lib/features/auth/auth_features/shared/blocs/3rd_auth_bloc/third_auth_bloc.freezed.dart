@@ -109,7 +109,7 @@ class __$$GoogleApiImplCopyWithImpl<$Res>
     Object? user = null,
   }) {
     return _then(_$GoogleApiImpl(
-      null == user
+      user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as FirebaseUserEntity,
@@ -120,7 +120,7 @@ class __$$GoogleApiImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GoogleApiImpl implements _GoogleApi {
-  const _$GoogleApiImpl(this.user);
+  const _$GoogleApiImpl({required this.user});
 
   @override
   final FirebaseUserEntity user;
@@ -223,7 +223,8 @@ class _$GoogleApiImpl implements _GoogleApi {
 }
 
 abstract class _GoogleApi implements ThirdAuthEvent {
-  const factory _GoogleApi(final FirebaseUserEntity user) = _$GoogleApiImpl;
+  const factory _GoogleApi({required final FirebaseUserEntity user}) =
+      _$GoogleApiImpl;
 
   FirebaseUserEntity get user;
   @JsonKey(ignore: true)
@@ -368,7 +369,7 @@ class __$$AppleApiImplCopyWithImpl<$Res>
     Object? user = null,
   }) {
     return _then(_$AppleApiImpl(
-      null == user
+      user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
               as FirebaseUserEntity,
@@ -379,7 +380,7 @@ class __$$AppleApiImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AppleApiImpl implements _AppleApi {
-  const _$AppleApiImpl(this.user);
+  const _$AppleApiImpl({required this.user});
 
   @override
   final FirebaseUserEntity user;
@@ -482,7 +483,8 @@ class _$AppleApiImpl implements _AppleApi {
 }
 
 abstract class _AppleApi implements ThirdAuthEvent {
-  const factory _AppleApi(final FirebaseUserEntity user) = _$AppleApiImpl;
+  const factory _AppleApi({required final FirebaseUserEntity user}) =
+      _$AppleApiImpl;
 
   FirebaseUserEntity get user;
   @JsonKey(ignore: true)

@@ -95,7 +95,7 @@ class MailRegisterBloc extends Bloc<MailRegisterEvent, MailRegisterState> {
 
     result.fold(
       (l) => emit(state.copyWith(errorMessage: l.message)),
-      (r) => _ApiLogin(request),
+      (r) => _ApiLogin(entity: request),
     );
   }
 
@@ -106,7 +106,7 @@ class MailRegisterBloc extends Bloc<MailRegisterEvent, MailRegisterState> {
       password: state.password.value,
     );
     final Either<Failure, LoginResultEntity> result =
-        await loginMailApiUsecase.call(loginMailEntity);
+        await loginMailApiUsecase.call(entity: loginMailEntity);
 
     result.fold(
         (l) => emit(state.copyWith(errorMessage: l.message)),

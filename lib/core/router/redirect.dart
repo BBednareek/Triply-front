@@ -25,7 +25,7 @@ Future<String?> redirect(BuildContext context, GoRouterState state) async {
       if (!(fullPath == Routes.login ||
               fullPath == Routes.register ||
               fullPath == Routes.registerForm ||
-              fullPath == Routes.resetPassword) ||
+              fullPath == Routes.forgotPassword) ||
           fullPath == Routes.loading) {
         return Routes.login;
       }

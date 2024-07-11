@@ -21,6 +21,7 @@ mixin _$MailLoginEvent {
     required TResult Function(String email) emailChanged,
     required TResult Function(String password) passwordChanged,
     required TResult Function() login,
+    required TResult Function() requestResetPassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$MailLoginEvent {
     TResult? Function(String email)? emailChanged,
     TResult? Function(String password)? passwordChanged,
     TResult? Function()? login,
+    TResult? Function()? requestResetPassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$MailLoginEvent {
     TResult Function(String email)? emailChanged,
     TResult Function(String password)? passwordChanged,
     TResult Function()? login,
+    TResult Function()? requestResetPassword,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$MailLoginEvent {
     required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(_PasswordChanged value) passwordChanged,
     required TResult Function(_Login value) login,
+    required TResult Function(_RequestResetPassword value) requestResetPassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$MailLoginEvent {
     TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(_PasswordChanged value)? passwordChanged,
     TResult? Function(_Login value)? login,
+    TResult? Function(_RequestResetPassword value)? requestResetPassword,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$MailLoginEvent {
     TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(_PasswordChanged value)? passwordChanged,
     TResult Function(_Login value)? login,
+    TResult Function(_RequestResetPassword value)? requestResetPassword,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -103,7 +109,7 @@ class __$$EmailChangedImplCopyWithImpl<$Res>
     Object? email = null,
   }) {
     return _then(_$EmailChangedImpl(
-      null == email
+      email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
@@ -114,7 +120,7 @@ class __$$EmailChangedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$EmailChangedImpl implements _EmailChanged {
-  const _$EmailChangedImpl(this.email);
+  const _$EmailChangedImpl({required this.email});
 
   @override
   final String email;
@@ -147,6 +153,7 @@ class _$EmailChangedImpl implements _EmailChanged {
     required TResult Function(String email) emailChanged,
     required TResult Function(String password) passwordChanged,
     required TResult Function() login,
+    required TResult Function() requestResetPassword,
   }) {
     return emailChanged(email);
   }
@@ -157,6 +164,7 @@ class _$EmailChangedImpl implements _EmailChanged {
     TResult? Function(String email)? emailChanged,
     TResult? Function(String password)? passwordChanged,
     TResult? Function()? login,
+    TResult? Function()? requestResetPassword,
   }) {
     return emailChanged?.call(email);
   }
@@ -167,6 +175,7 @@ class _$EmailChangedImpl implements _EmailChanged {
     TResult Function(String email)? emailChanged,
     TResult Function(String password)? passwordChanged,
     TResult Function()? login,
+    TResult Function()? requestResetPassword,
     required TResult orElse(),
   }) {
     if (emailChanged != null) {
@@ -181,6 +190,7 @@ class _$EmailChangedImpl implements _EmailChanged {
     required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(_PasswordChanged value) passwordChanged,
     required TResult Function(_Login value) login,
+    required TResult Function(_RequestResetPassword value) requestResetPassword,
   }) {
     return emailChanged(this);
   }
@@ -191,6 +201,7 @@ class _$EmailChangedImpl implements _EmailChanged {
     TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(_PasswordChanged value)? passwordChanged,
     TResult? Function(_Login value)? login,
+    TResult? Function(_RequestResetPassword value)? requestResetPassword,
   }) {
     return emailChanged?.call(this);
   }
@@ -201,6 +212,7 @@ class _$EmailChangedImpl implements _EmailChanged {
     TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(_PasswordChanged value)? passwordChanged,
     TResult Function(_Login value)? login,
+    TResult Function(_RequestResetPassword value)? requestResetPassword,
     required TResult orElse(),
   }) {
     if (emailChanged != null) {
@@ -211,7 +223,8 @@ class _$EmailChangedImpl implements _EmailChanged {
 }
 
 abstract class _EmailChanged implements MailLoginEvent {
-  const factory _EmailChanged(final String email) = _$EmailChangedImpl;
+  const factory _EmailChanged({required final String email}) =
+      _$EmailChangedImpl;
 
   String get email;
   @JsonKey(ignore: true)
@@ -242,7 +255,7 @@ class __$$PasswordChangedImplCopyWithImpl<$Res>
     Object? password = null,
   }) {
     return _then(_$PasswordChangedImpl(
-      null == password
+      password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
@@ -253,7 +266,7 @@ class __$$PasswordChangedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PasswordChangedImpl implements _PasswordChanged {
-  const _$PasswordChangedImpl(this.password);
+  const _$PasswordChangedImpl({required this.password});
 
   @override
   final String password;
@@ -288,6 +301,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     required TResult Function(String email) emailChanged,
     required TResult Function(String password) passwordChanged,
     required TResult Function() login,
+    required TResult Function() requestResetPassword,
   }) {
     return passwordChanged(password);
   }
@@ -298,6 +312,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     TResult? Function(String email)? emailChanged,
     TResult? Function(String password)? passwordChanged,
     TResult? Function()? login,
+    TResult? Function()? requestResetPassword,
   }) {
     return passwordChanged?.call(password);
   }
@@ -308,6 +323,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     TResult Function(String email)? emailChanged,
     TResult Function(String password)? passwordChanged,
     TResult Function()? login,
+    TResult Function()? requestResetPassword,
     required TResult orElse(),
   }) {
     if (passwordChanged != null) {
@@ -322,6 +338,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(_PasswordChanged value) passwordChanged,
     required TResult Function(_Login value) login,
+    required TResult Function(_RequestResetPassword value) requestResetPassword,
   }) {
     return passwordChanged(this);
   }
@@ -332,6 +349,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(_PasswordChanged value)? passwordChanged,
     TResult? Function(_Login value)? login,
+    TResult? Function(_RequestResetPassword value)? requestResetPassword,
   }) {
     return passwordChanged?.call(this);
   }
@@ -342,6 +360,7 @@ class _$PasswordChangedImpl implements _PasswordChanged {
     TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(_PasswordChanged value)? passwordChanged,
     TResult Function(_Login value)? login,
+    TResult Function(_RequestResetPassword value)? requestResetPassword,
     required TResult orElse(),
   }) {
     if (passwordChanged != null) {
@@ -352,7 +371,8 @@ class _$PasswordChangedImpl implements _PasswordChanged {
 }
 
 abstract class _PasswordChanged implements MailLoginEvent {
-  const factory _PasswordChanged(final String password) = _$PasswordChangedImpl;
+  const factory _PasswordChanged({required final String password}) =
+      _$PasswordChangedImpl;
 
   String get password;
   @JsonKey(ignore: true)
@@ -401,6 +421,7 @@ class _$LoginImpl implements _Login {
     required TResult Function(String email) emailChanged,
     required TResult Function(String password) passwordChanged,
     required TResult Function() login,
+    required TResult Function() requestResetPassword,
   }) {
     return login();
   }
@@ -411,6 +432,7 @@ class _$LoginImpl implements _Login {
     TResult? Function(String email)? emailChanged,
     TResult? Function(String password)? passwordChanged,
     TResult? Function()? login,
+    TResult? Function()? requestResetPassword,
   }) {
     return login?.call();
   }
@@ -421,6 +443,7 @@ class _$LoginImpl implements _Login {
     TResult Function(String email)? emailChanged,
     TResult Function(String password)? passwordChanged,
     TResult Function()? login,
+    TResult Function()? requestResetPassword,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -435,6 +458,7 @@ class _$LoginImpl implements _Login {
     required TResult Function(_EmailChanged value) emailChanged,
     required TResult Function(_PasswordChanged value) passwordChanged,
     required TResult Function(_Login value) login,
+    required TResult Function(_RequestResetPassword value) requestResetPassword,
   }) {
     return login(this);
   }
@@ -445,6 +469,7 @@ class _$LoginImpl implements _Login {
     TResult? Function(_EmailChanged value)? emailChanged,
     TResult? Function(_PasswordChanged value)? passwordChanged,
     TResult? Function(_Login value)? login,
+    TResult? Function(_RequestResetPassword value)? requestResetPassword,
   }) {
     return login?.call(this);
   }
@@ -455,6 +480,7 @@ class _$LoginImpl implements _Login {
     TResult Function(_EmailChanged value)? emailChanged,
     TResult Function(_PasswordChanged value)? passwordChanged,
     TResult Function(_Login value)? login,
+    TResult Function(_RequestResetPassword value)? requestResetPassword,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -469,11 +495,126 @@ abstract class _Login implements MailLoginEvent {
 }
 
 /// @nodoc
+abstract class _$$RequestResetPasswordImplCopyWith<$Res> {
+  factory _$$RequestResetPasswordImplCopyWith(_$RequestResetPasswordImpl value,
+          $Res Function(_$RequestResetPasswordImpl) then) =
+      __$$RequestResetPasswordImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$RequestResetPasswordImplCopyWithImpl<$Res>
+    extends _$MailLoginEventCopyWithImpl<$Res, _$RequestResetPasswordImpl>
+    implements _$$RequestResetPasswordImplCopyWith<$Res> {
+  __$$RequestResetPasswordImplCopyWithImpl(_$RequestResetPasswordImpl _value,
+      $Res Function(_$RequestResetPasswordImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$RequestResetPasswordImpl implements _RequestResetPassword {
+  const _$RequestResetPasswordImpl();
+
+  @override
+  String toString() {
+    return 'MailLoginEvent.requestResetPassword()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RequestResetPasswordImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email) emailChanged,
+    required TResult Function(String password) passwordChanged,
+    required TResult Function() login,
+    required TResult Function() requestResetPassword,
+  }) {
+    return requestResetPassword();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String email)? emailChanged,
+    TResult? Function(String password)? passwordChanged,
+    TResult? Function()? login,
+    TResult? Function()? requestResetPassword,
+  }) {
+    return requestResetPassword?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email)? emailChanged,
+    TResult Function(String password)? passwordChanged,
+    TResult Function()? login,
+    TResult Function()? requestResetPassword,
+    required TResult orElse(),
+  }) {
+    if (requestResetPassword != null) {
+      return requestResetPassword();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EmailChanged value) emailChanged,
+    required TResult Function(_PasswordChanged value) passwordChanged,
+    required TResult Function(_Login value) login,
+    required TResult Function(_RequestResetPassword value) requestResetPassword,
+  }) {
+    return requestResetPassword(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_EmailChanged value)? emailChanged,
+    TResult? Function(_PasswordChanged value)? passwordChanged,
+    TResult? Function(_Login value)? login,
+    TResult? Function(_RequestResetPassword value)? requestResetPassword,
+  }) {
+    return requestResetPassword?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EmailChanged value)? emailChanged,
+    TResult Function(_PasswordChanged value)? passwordChanged,
+    TResult Function(_Login value)? login,
+    TResult Function(_RequestResetPassword value)? requestResetPassword,
+    required TResult orElse(),
+  }) {
+    if (requestResetPassword != null) {
+      return requestResetPassword(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RequestResetPassword implements MailLoginEvent {
+  const factory _RequestResetPassword() = _$RequestResetPasswordImpl;
+}
+
+/// @nodoc
 mixin _$MailLoginState {
-  FormzSubmissionStatus get status => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
+  bool get posted => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MailLoginStateCopyWith<MailLoginState> get copyWith =>
@@ -486,11 +627,7 @@ abstract class $MailLoginStateCopyWith<$Res> {
           MailLoginState value, $Res Function(MailLoginState) then) =
       _$MailLoginStateCopyWithImpl<$Res, MailLoginState>;
   @useResult
-  $Res call(
-      {FormzSubmissionStatus status,
-      String email,
-      String password,
-      String errorMessage});
+  $Res call({String email, String password, String errorMessage, bool posted});
 }
 
 /// @nodoc
@@ -506,16 +643,12 @@ class _$MailLoginStateCopyWithImpl<$Res, $Val extends MailLoginState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
     Object? email = null,
     Object? password = null,
     Object? errorMessage = null,
+    Object? posted = null,
   }) {
     return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as FormzSubmissionStatus,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -528,6 +661,10 @@ class _$MailLoginStateCopyWithImpl<$Res, $Val extends MailLoginState>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      posted: null == posted
+          ? _value.posted
+          : posted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -540,11 +677,7 @@ abstract class _$$MailLoginStateImplCopyWith<$Res>
       __$$MailLoginStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {FormzSubmissionStatus status,
-      String email,
-      String password,
-      String errorMessage});
+  $Res call({String email, String password, String errorMessage, bool posted});
 }
 
 /// @nodoc
@@ -558,16 +691,12 @@ class __$$MailLoginStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
     Object? email = null,
     Object? password = null,
     Object? errorMessage = null,
+    Object? posted = null,
   }) {
     return _then(_$MailLoginStateImpl(
-      null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as FormzSubmissionStatus,
       null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -580,6 +709,10 @@ class __$$MailLoginStateImplCopyWithImpl<$Res>
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String,
+      null == posted
+          ? _value.posted
+          : posted // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -588,14 +721,11 @@ class __$$MailLoginStateImplCopyWithImpl<$Res>
 
 class _$MailLoginStateImpl implements _MailLoginState {
   const _$MailLoginStateImpl(
-      [this.status = FormzSubmissionStatus.initial,
-      this.email = "",
+      [this.email = "",
       this.password = "",
-      this.errorMessage = ""]);
+      this.errorMessage = "",
+      this.posted = false]);
 
-  @override
-  @JsonKey()
-  final FormzSubmissionStatus status;
   @override
   @JsonKey()
   final String email;
@@ -605,10 +735,13 @@ class _$MailLoginStateImpl implements _MailLoginState {
   @override
   @JsonKey()
   final String errorMessage;
+  @override
+  @JsonKey()
+  final bool posted;
 
   @override
   String toString() {
-    return 'MailLoginState(status: $status, email: $email, password: $password, errorMessage: $errorMessage)';
+    return 'MailLoginState(email: $email, password: $password, errorMessage: $errorMessage, posted: $posted)';
   }
 
   @override
@@ -616,17 +749,17 @@ class _$MailLoginStateImpl implements _MailLoginState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MailLoginStateImpl &&
-            (identical(other.status, status) || other.status == status) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password) &&
             (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+                other.errorMessage == errorMessage) &&
+            (identical(other.posted, posted) || other.posted == posted));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, status, email, password, errorMessage);
+      Object.hash(runtimeType, email, password, errorMessage, posted);
 
   @JsonKey(ignore: true)
   @override
@@ -638,19 +771,19 @@ class _$MailLoginStateImpl implements _MailLoginState {
 
 abstract class _MailLoginState implements MailLoginState {
   const factory _MailLoginState(
-      [final FormzSubmissionStatus status,
-      final String email,
+      [final String email,
       final String password,
-      final String errorMessage]) = _$MailLoginStateImpl;
+      final String errorMessage,
+      final bool posted]) = _$MailLoginStateImpl;
 
-  @override
-  FormzSubmissionStatus get status;
   @override
   String get email;
   @override
   String get password;
   @override
   String get errorMessage;
+  @override
+  bool get posted;
   @override
   @JsonKey(ignore: true)
   _$$MailLoginStateImplCopyWith<_$MailLoginStateImpl> get copyWith =>

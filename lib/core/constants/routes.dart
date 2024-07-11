@@ -7,7 +7,7 @@ class Routes extends Constants {
   static const String loading = '/loading';
 
   static const String login = '/login';
-  static const String resetPassword = '$login/resetPassword';
+  static const String forgotPassword = '$login/forgotPassword';
 
   static const String register = '/register';
   static const String registerForm = '/register/form';

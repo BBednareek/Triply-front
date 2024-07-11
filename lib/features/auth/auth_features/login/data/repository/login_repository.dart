@@ -12,12 +12,14 @@ import 'package:triply/features/auth/auth_features/shared/entities/login_result_
 
 abstract class LoginRepository {
   Future<Either<Failure, LoginResultEntity>> mailWithApi(
-      LoginMailEntity entity);
-  Future<Either<Failure, LoginResultEntity>> googleWithApi(String accessToken);
+      {required LoginMailEntity entity});
+  Future<Either<Failure, LoginResultEntity>> googleWithApi(
+      {required String accessToken});
   Future<Either<Failure, LoginResultEntity>> appleWithApi(
-      AppleRequestEntity request);
+      {required AppleRequestEntity request});
   Future<Either<Failure, FirebaseUserEntity>> appleWithFirebase();
   Future<Either<Failure, FirebaseUserEntity>> googleWithFirebase();
+  Future<Either<Failure, bool>> requestResetPassword({required String email});
 }
 
 @LazySingleton(as: LoginRepository)
@@ -28,10 +30,10 @@ class LoginRepositoryImpl implements LoginRepository {
 
   @override
   Future<Either<Failure, LoginResultEntity>> appleWithApi(
-      AppleRequestEntity request) async {
+      {required AppleRequestEntity request}) async {
     try {
       final LoginResultEntity result =
-          await loginDatasource.appleWithApi(request);
+          await loginDatasource.appleWithApi(request: request);
       return Right(result);
     } catch (e) {
       return Left(Failure.throwable(e));
@@ -83,10 +85,10 @@ class LoginRepositoryImpl implements LoginRepository {
 
   @override
   Future<Either<Failure, LoginResultEntity>> googleWithApi(
-      String accessToken) async {
+      {required String accessToken}) async {
     try {
       final LoginResultEntity result =
-          await loginDatasource.googleWithApi(accessToken);
+          await loginDatasource.googleWithApi(accessToken: accessToken);
       return Right(result);
     } catch (e) {
       return Left(Failure.throwable(e));
@@ -129,10 +131,23 @@ class LoginRepositoryImpl implements LoginRepository {
 
   @override
   Future<Either<Failure, LoginResultEntity>> mailWithApi(
-      LoginMailEntity entity) async {
+      {required LoginMailEntity entity}) async {
     try {
       final LoginResultEntity result =
-          await loginDatasource.mailWithApi(entity);
+          await loginDatasource.mailWithApi(entity: entity);
+      return Right(result);
+    } catch (e) {
+      return Left(Failure.throwable(e));
+    }
+  }
+
+  @override
+  Future<Either<Failure, bool>> requestResetPassword(
+      {required String email}) async {
+    try {
+      final bool result =
+          await loginDatasource.requestResetPassword(email: email);
+
       return Right(result);
     } catch (e) {
       return Left(Failure.throwable(e));

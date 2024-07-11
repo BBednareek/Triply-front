@@ -44,9 +44,8 @@ class __DetailsFormState extends State<_DetailsForm> {
                   InputFieldWidget(
                     width: width,
                     isObscured: false,
-                    onChanged: (value) => context
-                        .read<MailRegisterBloc>()
-                        .add(MailRegisterEvent.nicknameChanged(value)),
+                    onChanged: (value) => context.read<MailRegisterBloc>().add(
+                        MailRegisterEvent.nicknameChanged(nickname: value)),
                     title: "Podaj nazwę użytkownika",
                   ),
                   const SizedBox(height: 10),
@@ -104,7 +103,7 @@ class __DetailsFormState extends State<_DetailsForm> {
                   }).toList(),
                   onChanged: (int? value) {
                     context.read<MailRegisterBloc>().add(
-                          MailRegisterEvent.genderChanged(value ?? 0),
+                          MailRegisterEvent.genderChanged(gender: value ?? 0),
                         );
                   },
                 );

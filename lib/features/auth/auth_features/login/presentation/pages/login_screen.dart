@@ -5,10 +5,12 @@ import 'package:triply/core/constants/auth.dart';
 import 'package:triply/core/constants/images.dart';
 import 'package:triply/core/constants/routes.dart';
 import 'package:triply/core/di/injectable.dart';
+import 'package:triply/core/extensions/context_extension.dart';
 import 'package:triply/core/theme/paddings.dart';
 import 'package:triply/core/theme/styles/login_widgets/login_button.dart';
 import 'package:triply/core/theme/styles/login_widgets/third_auth_button.dart';
 import 'package:triply/core/theme/styles/shared/input_field.dart';
+import 'package:triply/core/theme/styles/text_styles/text_styles.dart';
 import 'package:triply/features/auth/auth_features/login/presentation/bloc/mail_bloc.dart';
 import 'package:triply/features/auth/auth_features/shared/blocs/3rd_auth_bloc/third_auth_bloc.dart';
 import 'package:triply/features/auth/auth_features/shared/widgets/error_box.dart';
@@ -22,7 +24,8 @@ class LoginScreen extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-            create: (context) => MailLoginBloc(mailApiUsecase: locator())),
+            create: (context) => MailLoginBloc(
+                mailApiUsecase: locator(), forgotPasswordUsecase: locator())),
         BlocProvider(
           create: (context) => ThirdAuthBloc(
               loginAppleApiUsecase: locator(),
@@ -70,7 +73,7 @@ class _LoginScreen extends StatelessWidget {
                         isObscured: false,
                         onChanged: (value) => context
                             .read<MailLoginBloc>()
-                            .add(MailLoginEvent.emailChanged(value)),
+                            .add(MailLoginEvent.emailChanged(email: value)),
                         title: "Wprowadź e-mail",
                       ),
                       ShowErrorMessage(
@@ -81,9 +84,8 @@ class _LoginScreen extends StatelessWidget {
                       InputFieldWidget(
                         width: width * .8,
                         isObscured: true,
-                        onChanged: (value) => context
-                            .read<MailLoginBloc>()
-                            .add(MailLoginEvent.passwordChanged(value)),
+                        onChanged: (value) => context.read<MailLoginBloc>().add(
+                            MailLoginEvent.passwordChanged(password: value)),
                         title: "Wprowadź hasło",
                       ),
                       const SizedBox(height: 20),
@@ -94,6 +96,12 @@ class _LoginScreen extends StatelessWidget {
                             .add(const MailLoginEvent.login()),
                       ),
                       const SizedBox(height: 20),
+                      TextButton(
+                        onPressed: () => context.push(Routes.forgotPassword,
+                            extra: context.read<MailLoginBloc>()),
+                        child: Text("Zapomniałem hasła",
+                            style: context.textStyle(fontSize16W500grey)),
+                      ),
                       Padding(
                         padding: Paddings.bottom40,
                         child: Column(

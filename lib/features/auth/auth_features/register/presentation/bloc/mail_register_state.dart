@@ -11,7 +11,7 @@ abstract class MailRegisterState with _$MailRegisterState {
     @Default("") String errorMessage,
     @Default("") String emailError,
     @Default("") String passwordError,
-    @Default("") int gender,
+    @Default(0) int gender,
     @Default(false) bool buttonAvailable,
     @Default(false) bool submitted,
   ]) = _MailRegisterState;

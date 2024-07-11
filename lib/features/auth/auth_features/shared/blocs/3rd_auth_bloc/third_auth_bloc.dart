@@ -53,7 +53,7 @@ class ThirdAuthBloc extends Bloc<ThirdAuthEvent, ThirdAuthState> {
     final String accessToken = event.user.jwtToken;
 
     final Either<Failure, LoginResultEntity> result =
-        await loginGoogleApiUsecase.call(accessToken);
+        await loginGoogleApiUsecase.call(accessToken: accessToken);
 
     result.fold((l) => emit(_Failure(l.message)), (r) async {
       locator<AuthCubit>().login(
@@ -72,7 +72,7 @@ class ThirdAuthBloc extends Bloc<ThirdAuthEvent, ThirdAuthState> {
 
     result.fold(
       (l) => emit(_Failure(l.message)),
-      (r) => add(_GoogleApi(r)),
+      (r) => add(_GoogleApi(user: r)),
     );
   }
 
@@ -81,7 +81,7 @@ class ThirdAuthBloc extends Bloc<ThirdAuthEvent, ThirdAuthState> {
         AppleRequestEntity.createByFirebaseToLogin(event.user);
 
     final Either<Failure, LoginResultEntity> result =
-        await loginAppleApiUsecase.call(request);
+        await loginAppleApiUsecase.call(request: request);
 
     result.fold((l) => emit(_Failure(l.message)), (r) async {
       locator<AuthCubit>().login(
@@ -100,7 +100,7 @@ class ThirdAuthBloc extends Bloc<ThirdAuthEvent, ThirdAuthState> {
 
     result.fold(
       (l) => emit(_Failure(l.message)),
-      (r) => add(_AppleApi(r)),
+      (r) => add(_AppleApi(user: r)),
     );
   }
 }

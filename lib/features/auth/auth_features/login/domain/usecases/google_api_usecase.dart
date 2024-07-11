@@ -10,6 +10,7 @@ class LoginGoogleApiUsecase {
 
   LoginGoogleApiUsecase({required this.loginRepository});
 
-  Future<Either<Failure, LoginResultEntity>> call(String accessToken) async =>
-      await loginRepository.googleWithApi(accessToken);
+  Future<Either<Failure, LoginResultEntity>> call(
+          {required String accessToken}) async =>
+      await loginRepository.googleWithApi(accessToken: accessToken);
 }

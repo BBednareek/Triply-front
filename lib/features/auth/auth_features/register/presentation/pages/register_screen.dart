@@ -74,7 +74,7 @@ class _RegisterScreen extends StatelessWidget {
                         isObscured: false,
                         onChanged: (value) => context
                             .read<MailRegisterBloc>()
-                            .add(MailRegisterEvent.emailChanged(value)),
+                            .add(MailRegisterEvent.emailChanged(email: value)),
                         title: "Wprowadź e-mail",
                       ),
                       const SizedBox(height: 5),
@@ -88,7 +88,8 @@ class _RegisterScreen extends StatelessWidget {
                         isObscured: true,
                         onChanged: (value) => context
                             .read<MailRegisterBloc>()
-                            .add(MailRegisterEvent.passwordChanged(value)),
+                            .add(MailRegisterEvent.passwordChanged(
+                                password: value)),
                         title: "Wprowadź hasło",
                       ),
                       const SizedBox(height: 5),
