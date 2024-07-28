@@ -50,6 +50,7 @@ class _ForgotPassword extends StatelessWidget {
                       .read<MailLoginBloc>()
                       .add(MailLoginEvent.emailChanged(email: value)),
                   title: "Wprowadź email, z którego założyłeś konto:",
+                  placeholder: "",
                 ),
                 const SizedBox(height: 5),
                 ShowSuccessMessage(

@@ -69,6 +69,7 @@ class _LoginScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 10),
                       InputFieldWidget(
+                        placeholder: "",
                         width: width * .8,
                         isObscured: false,
                         onChanged: (value) => context
@@ -82,6 +83,7 @@ class _LoginScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 20),
                       InputFieldWidget(
+                        placeholder: "",
                         width: width * .8,
                         isObscured: true,
                         onChanged: (value) => context.read<MailLoginBloc>().add(

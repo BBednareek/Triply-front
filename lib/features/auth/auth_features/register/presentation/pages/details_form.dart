@@ -1,5 +1,7 @@
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:triply/core/constants/country_code_list.dart';
 import 'package:triply/core/theme/styles/shared/input_field.dart';
 import 'package:triply/core/theme/styles/shared/reference_button.dart';
 import 'package:triply/features/auth/auth_features/register/presentation/bloc/mail_register_bloc.dart';
@@ -39,41 +41,74 @@ class __DetailsFormState extends State<_DetailsForm> {
             ),
             SizedBox(
               width: width * .8,
-              child: Column(
-                children: [
-                  InputFieldWidget(
-                    width: width,
-                    isObscured: false,
-                    onChanged: (value) => context.read<MailRegisterBloc>().add(
-                        MailRegisterEvent.nicknameChanged(nickname: value)),
-                    title: "Podaj nazwę użytkownika",
-                  ),
-                  const SizedBox(height: 10),
-                  Row(
+              child: BlocBuilder<MailRegisterBloc, MailRegisterState>(
+                builder: (context, state) {
+                  return Column(
                     children: [
-                      Expanded(
-                        child: Column(
-                          children: [
-                            const Text("Wybierz kod krajowy"),
-                            ReferenceButton(
-                              width: width * .35,
-                              method: () {},
-                              text: "Kod",
-                            ),
-                          ],
-                        ),
+                      InputFieldWidget(
+                        width: width,
+                        isObscured: false,
+                        onChanged: (value) => context
+                            .read<MailRegisterBloc>()
+                            .add(MailRegisterEvent.nicknameChanged(
+                                nickname: value)),
+                        title: "Podaj nazwę użytkownika",
+                        placeholder:
+                            state.nickname.isEmpty ? "" : state.nickname,
                       ),
-                      Expanded(
-                        child: InputFieldWidget(
-                          width: width,
-                          isObscured: false,
-                          onChanged: (value) {},
-                          title: "Podaj numer",
-                        ),
-                      )
+                      const SizedBox(height: 10),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Column(
+                              children: [
+                                const Text("Wybierz kod krajowy"),
+                                ReferenceButton(
+                                  width: width * .35,
+                                  method: () {
+                                    showCountryPicker(
+                                      context: context,
+                                      showPhoneCode: true,
+                                      showSearch: true,
+                                      countryFilter:
+                                          CountryCodeList.countryCodeList,
+                                      onSelect: (Country country) {
+                                        context.read<MailRegisterBloc>().add(
+                                              MailRegisterEvent
+                                                  .phoneNumberCodeChanged(
+                                                phoneNumberCode:
+                                                    country.phoneCode,
+                                              ),
+                                            );
+                                      },
+                                    );
+                                  },
+                                  text: state.phoneCode.isEmpty
+                                      ? "Kod"
+                                      : "+${state.phoneCode}",
+                                ),
+                              ],
+                            ),
+                          ),
+                          Expanded(
+                            child: InputFieldWidget(
+                              width: width,
+                              isObscured: false,
+                              onChanged: (value) => context
+                                  .read<MailRegisterBloc>()
+                                  .add(MailRegisterEvent.phoneNumberChanged(
+                                      phoneNumber: value)),
+                              title: "Podaj numer",
+                              placeholder: state.phoneNumber.isEmpty
+                                  ? ""
+                                  : state.phoneNumber,
+                            ),
+                          )
+                        ],
+                      ),
                     ],
-                  ),
-                ],
+                  );
+                },
               ),
             ),
             SizedBox(
@@ -108,7 +143,12 @@ class __DetailsFormState extends State<_DetailsForm> {
                   },
                 );
               }),
-            )
+            ),
+            ElevatedButton(
+                onPressed: () => context
+                    .read<MailRegisterBloc>()
+                    .add(const MailRegisterEvent.submit()),
+                child: const Text("test"))
           ],
         ),
       ),

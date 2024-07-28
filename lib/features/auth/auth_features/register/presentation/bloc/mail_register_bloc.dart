@@ -85,7 +85,7 @@ class MailRegisterBloc extends Bloc<MailRegisterEvent, MailRegisterState> {
       email: state.email.value,
       password: state.password.value,
       phoneNumber: state.phoneNumber,
-      phoneNumberCode: state.phoneCode,
+      phoneNumberCode: "+${state.phoneCode}",
       nickname: state.nickname,
       gender: state.gender,
     );
@@ -95,7 +95,8 @@ class MailRegisterBloc extends Bloc<MailRegisterEvent, MailRegisterState> {
 
     result.fold(
       (l) => emit(state.copyWith(errorMessage: l.message)),
-      (r) => _ApiLogin(entity: request),
+      // (r) => _ApiLogin(entity: request),
+      (r) => null,
     );
   }
 

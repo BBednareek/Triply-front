@@ -1,3 +1,4 @@
+import 'package:chucker_flutter/chucker_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:triply/core/router/pages/error.dart';
@@ -15,13 +16,15 @@ final settingsNavKey =
     GlobalKey<NavigatorState>(debugLabel: "settingsNavigatorKey");
 
 final GoRouter goRouter = GoRouter(
-    navigatorKey: rootNavigatorKey,
-    initialLocation: '/',
-    debugLogDiagnostics: true,
-    redirectLimit: 999,
-    redirect: (context, state) async => await redirect(context, state),
-    routes: [
-      ...authRoutes,
-      shellRoute,
-    ],
-    errorBuilder: (_, __) => const Error());
+  navigatorKey: rootNavigatorKey,
+  initialLocation: '/',
+  debugLogDiagnostics: true,
+  redirectLimit: 999,
+  redirect: (context, state) async => await redirect(context, state),
+  routes: [
+    ...authRoutes,
+    shellRoute,
+  ],
+  errorBuilder: (_, __) => const Error(),
+  observers: [ChuckerFlutter.navigatorObserver],
+);

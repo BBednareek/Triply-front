@@ -1,4 +1,5 @@
 import 'package:injectable/injectable.dart';
+import 'package:triply/core/constants/pathes.dart';
 import 'package:triply/core/network/factory/dio_factory.dart';
 import 'package:triply/features/auth/auth_features/register/domain/entities/request_register_entity.dart';
 import 'package:triply/features/auth/auth_features/register/domain/entities/response_register_entity.dart';
@@ -37,7 +38,7 @@ class RegisterDatasourceImpl implements RegisterDatasource {
       {required RequestMailRegisterEntity entity}) async {
     try {
       final Map<String, dynamic> result =
-          await dioFactory.post("", data: entity.toJson());
+          await dioFactory.post(Pathes.registerMail, data: entity.toJson());
       return result['data'];
     } catch (e, st) {
       throw dioFactory.handleException(e, stackTrace: st);

@@ -1,3 +1,4 @@
+import 'package:chucker_flutter/chucker_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:triply/core/addons/disable_glow_scroll.dart';
@@ -33,33 +34,36 @@ class Triply extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ThemeCubit, ThemeEntity>(
-      builder: (context, state) => MaterialApp.router(
-        routerConfig: goRouter,
-        title: "Triply",
-        themeMode: state.isDark ? ThemeMode.dark : ThemeMode.light,
-        debugShowCheckedModeBanner: false,
-        theme: lightTheme(),
-        darkTheme: darkTheme(),
-        builder: (appContext, child) {
-          return ScrollConfiguration(
-            behavior: DisableGlowScroll(),
-            child: MultiBlocListener(
-              listeners: [
-                BlocListener<AuthCubit, AuthState>(
-                    listener: (context, state) => goRouter.refresh()),
-                BlocListener<InternetBloc, InternetState>(
-                  listener: (context, state) {
-                    if (state.noInternet && state.lastRoute == null) {
-                      goRouter.refresh();
-                    }
-                  },
-                ),
-              ],
-              child: child!,
-            ),
-          );
-        },
+    return GestureDetector(
+      onLongPress: () => ChuckerFlutter.showChuckerScreen(),
+      child: BlocBuilder<ThemeCubit, ThemeEntity>(
+        builder: (context, state) => MaterialApp.router(
+          routerConfig: goRouter,
+          title: "Triply",
+          themeMode: state.isDark ? ThemeMode.dark : ThemeMode.light,
+          debugShowCheckedModeBanner: false,
+          theme: lightTheme(),
+          darkTheme: darkTheme(),
+          builder: (appContext, child) {
+            return ScrollConfiguration(
+              behavior: DisableGlowScroll(),
+              child: MultiBlocListener(
+                listeners: [
+                  BlocListener<AuthCubit, AuthState>(
+                      listener: (context, state) => goRouter.refresh()),
+                  BlocListener<InternetBloc, InternetState>(
+                    listener: (context, state) {
+                      if (state.noInternet && state.lastRoute == null) {
+                        goRouter.refresh();
+                      }
+                    },
+                  ),
+                ],
+                child: child!,
+              ),
+            );
+          },
+        ),
       ),
     );
   }

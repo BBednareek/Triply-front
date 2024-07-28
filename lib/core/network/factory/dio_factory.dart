@@ -1,7 +1,9 @@
 import 'dart:io';
 
+import 'package:chucker_flutter/chucker_flutter.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:triply/core/constants/pathes.dart';
 import 'package:triply/core/network/error/handler.dart';
 import 'package:triply/core/network/interceptors/auth_interceptors.dart';
 import 'package:triply/features/auth/cubit/auth_cubit.dart';
@@ -35,7 +37,7 @@ class DioFactoryImpl extends DioFactory {
 
   @override
   Dio getDio({String? url, Map<String, dynamic>? headers}) => Dio(BaseOptions(
-      baseUrl: url ?? "",
+      baseUrl: url ?? Pathes.basePath,
       contentType: 'application/json',
       responseType: ResponseType.json,
       headers: headers,
@@ -44,6 +46,7 @@ class DioFactoryImpl extends DioFactory {
     ..interceptors.addAll(
       [
         AuthInterceptors(authCubit: authCubit),
+        ChuckerDioInterceptor(),
       ],
     );
 

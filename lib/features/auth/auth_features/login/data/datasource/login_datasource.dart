@@ -1,4 +1,5 @@
 import 'package:injectable/injectable.dart';
+import 'package:triply/core/constants/pathes.dart';
 import 'package:triply/core/network/factory/dio_factory.dart';
 import 'package:triply/features/auth/auth_features/login/domain/entities/login_mail_entity.dart';
 import 'package:triply/features/auth/auth_features/shared/entities/apple_entity.dart';
@@ -22,7 +23,7 @@ class LoginDatasourceImpl implements LoginDatasource {
       {required AppleRequestEntity request}) async {
     try {
       final Map<String, dynamic> result =
-          await dioFactory.post("", data: request.loginToJson());
+          await dioFactory.post(Pathes.loginMail, data: request.loginToJson());
       return LoginResultEntity.fromJson(result);
     } catch (e, st) {
       throw dioFactory.handleException(e, stackTrace: st);

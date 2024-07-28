@@ -5,15 +5,21 @@ import 'package:triply/core/theme/styles/text_styles/text_styles.dart';
 class InputFieldWidget extends StatelessWidget {
   const InputFieldWidget({
     super.key,
+    required this.placeholder,
     required this.width,
     required this.isObscured,
     required this.onChanged,
     required this.title,
   });
+
   final double width;
+
   final bool isObscured;
+
   final Function(String) onChanged;
+
   final String title;
+  final String placeholder;
 
   @override
   Widget build(BuildContext context) {
